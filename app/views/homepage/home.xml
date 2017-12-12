@@ -1,6 +1,7 @@
 <Page loaded="loaded">
+    <ActionBar title="Welcome"></ActionBar>
 
-
+<label text="ggg"></label>
 
 
 
