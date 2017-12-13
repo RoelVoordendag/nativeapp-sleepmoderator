@@ -1,8 +1,9 @@
-<Page loaded="loaded">
+<Page loaded="loaded">  
     <ActionBar title="Welcome"></ActionBar>
+        <StackLayout>
+            <label id="main-label" text="Discover" ></label>
+            <label id="despcription-label" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt "/>
 
-<label text="YEAH BOI"></label>
 
-
-
+        </StackLayout>
 </Page>

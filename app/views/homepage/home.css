@@ -1,5 +1,21 @@
 @import url('~/platform.css');
 
 page{
-    background-color:tomato;
+    background-color: white; 
 }
+#main-label{
+    font-size:  40px;
+    text-align: center;
+    padding-top:56px;
+}
+#despcription-label{
+    font-size: 14px;
+    text-align: center;
+    padding-top:20px;
+    padding-left:30px;
+
+
+
+}
+
+
