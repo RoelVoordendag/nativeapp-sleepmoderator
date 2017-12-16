@@ -1,21 +1,43 @@
 @import url('~/platform.css');
 
 page{
-    background-color: white; 
+    background-color: white;
 }
+ActionBar{
+    align-content: center;
+}
+
+#label-actionbar{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 27px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+StackLayout{
+    background-color: #F1F9FF;
+    padding-bottom: 220px;
+    margin-bottom: 500px;   
+}
+
 #main-label{
     font-size:  40px;
     text-align: center;
     padding-top:56px;
+    color: #2699FB;
 }
 #despcription-label{
+    color: #2699FB;
     font-size: 14px;
     text-align: center;
     padding-top:20px;
-    padding-left:30px;
-
-
-
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    white-space: normal;
+    line-height: 1px;
 }
 
 

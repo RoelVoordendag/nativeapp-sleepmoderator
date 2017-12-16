@@ -1,9 +1,35 @@
-<Page loaded="loaded">  
-    <ActionBar title="Welcome"></ActionBar>
-        <StackLayout>
-            <label id="main-label" text="Discover" ></label>
-            <label id="despcription-label" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt "/>
+<Page
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:chart="nativescript-pro-ui/chart"
+    class="page" loaded="pageLoaded">  
+    <ActionBar title="Title">
+        <GridLayout>        
+            <label text="Welcome" id="label-actionbar" horizontalAlignment="center" />
+        </GridLayout>
+    </ActionBar>
+       
+    <StackLayout>
+        <label id="main-label" text="Discover" ></label>
+   
+        <label id="despcription-label"  text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt Excepteur sint occaecat cupidatat non proident"/>
 
+        <chart:RadPieChart height="300">
+        <chart:RadPieChart.series>
+            <chart:PieSeries
+            selectionMode="None"
+            items="{{ generationData }}"
+            outerRadiusFactor="0.8"
+            valueProperty="count"
+            legendLabel="generation"
+            showLabels="true">
+            </chart:PieSeries>
+        </chart:RadPieChart.series>
+        <chart:RadPieChart.legend>
+            <chart:RadLegendView
+            position="Right"
+            width="110" />
+        </chart:RadPieChart.legend>
+        </chart:RadPieChart>
 
-        </StackLayout>
+    </StackLayout>
 </Page>
