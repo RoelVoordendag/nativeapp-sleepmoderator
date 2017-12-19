@@ -6,30 +6,46 @@
         <GridLayout>        
             <label text="Welcome" id="label-actionbar" horizontalAlignment="center" />
         </GridLayout>
-    </ActionBar>
-       
-    <StackLayout>
-        <label id="main-label" text="Discover" ></label>
-   
-        <label id="despcription-label"  text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt Excepteur sint occaecat cupidatat non proident"/>
+    </ActionBar> 
+    <StackLayout> 
 
-        <chart:RadPieChart height="300">
-        <chart:RadPieChart.series>
-            <chart:PieSeries
-            selectionMode="None"
-            items="{{ generationData }}"
-            outerRadiusFactor="0.8"
-            valueProperty="count"
-            legendLabel="generation"
-            showLabels="true">
+        <StackLayout oriantation="vertical" id="layout-landing-page" verticalAlignment="top">
+
+            <label id="main-label" text="Discover" horizontalAlignment="center"></label>
+    
+            <label id="despcription-label" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt Excepteur sint occaecat cupidatat non proident"/>
+           
+            <chart:RadPieChart height="300" id="pie-chart" >
+            <chart:RadPieChart.series>
+                <chart:PieSeries
+                seriesName="home-pie"
+                selectionMode="none"
+                items="{{ generationData }}"
+                outerRadiusFactor="0.8"
+                valueProperty="count"
+                legendLabel="generation"
+                setTouchEnabled="enabled"
+                showLabels="false">
             </chart:PieSeries>
-        </chart:RadPieChart.series>
-        <chart:RadPieChart.legend>
-            <chart:RadLegendView
-            position="Right"
-            width="110" />
-        </chart:RadPieChart.legend>
-        </chart:RadPieChart>
+            </chart:RadPieChart.series>
+            <chart:RadCartesianChart.palettes>
+            <chart:Palette seriesName="home-pie">
+                <chart:Palette.entries>
+                    <chart:PaletteEntry fillColor="#BCE0FD" strokeColor="#BCE0FD" />
+                    <chart:PaletteEntry fillColor="#2699FB" strokeColor="#2699FB"/>           
+                </chart:Palette.entries>
+            </chart:Palette>
+            </chart:RadCartesianChart.palettes>
+            </chart:RadPieChart>       
+        </StackLayout>
+
+        <StackLayout id="bottom-page" verticalAlignment="bottom" orientation="horizontal">
+                <Button text="Try It" id="register-button" horizontalAlignment="left" verticalAlignment="bottom"/>
+                <Button text="Sign In" id="signin-button" horizontalAlignment="right" verticalAlignment="bottom"  />
+        </StackLayout> 
+     
 
     </StackLayout>
 </Page>
+
+
