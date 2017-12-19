@@ -6,7 +6,9 @@ pageData.generationData = [
   { generation: "One", count: 15 },
   { generation: "Two", count: 10 }
 ];
-
+exports.signIn = function() {
+  frameModule.topmost().navigate("views/signup-page/signup");
+};
 exports.pageLoaded = function(args) {
   var page = args.object;
   page.bindingContext = pageData;

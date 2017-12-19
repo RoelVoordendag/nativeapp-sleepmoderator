@@ -1,0 +1,15 @@
+<Page loaded="pageLoaded">
+    <ActionBar title="Title">
+        <GridLayout>        
+            <label text="Sign Up" id="label-actionbar" horizontalAlignment="center" />
+        </GridLayout>
+    </ActionBar> 
+    <StackLayout oriantation="vertical" id="signup-page" verticalAlignment="top">
+
+        <TextField text="" id="name" hint="Full Name" autocorrect="false" autocapitalizationType="none"/>
+        <TextField text="" id="email" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
+        <TextField text="" id="password" hint="Password" secure="true"/>
+
+
+    </StackLayout>
+</Page>
