@@ -1,15 +1,25 @@
-<Page loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+xmlns:rt="nativescript-rich-textfield">
     <ActionBar title="Title">
-        <GridLayout>        
+        <StackLayout>        
             <label text="Sign Up" id="label-actionbar" horizontalAlignment="center" />
-        </GridLayout>
+        </StackLayout>
     </ActionBar> 
-    <StackLayout oriantation="vertical" id="signup-page" verticalAlignment="top">
+    <StackLayout>
+        <StackLayout oriantation="vertical" id="signup-page" verticalAlignment="top">
 
-        <TextField text="" id="name" hint="Full Name" autocorrect="false" autocapitalizationType="none"/>
-        <TextField text="" id="email" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
-        <TextField text="" id="password" hint="Password" secure="true"/>
+            <!-- example for how to use icons from font awesome "&#xe621; -->
+            <TextField text= "{{name}}" id="name"  tap="{{deleteName}}" autocorrect="false" autocapitalizationType="none"/>
+            <TextField text="{{email}}" id="email" tap="{{deleteEmail}}" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
+            <TextField text="{{password}}" id="password" tap="{{deletePassword}}" secure="true"/>
 
+            <Button text="Contnue" id="registration-button" tap="signUp"/>
 
+            <label text="Already have an Account?" id="signIn-label" tap="signInPage" horizontalAlignment ="center"></label>
+
+        </StackLayout>
+        <StackLayout id="bottom-button" oriantation="vertical" verticalAlignment="bottom" tap="goBack" >
+            <label text="Go Back" id="label-bottom" horizontalAlignment="center"></label>
+        </StackLayout>
     </StackLayout>
 </Page>

@@ -40,8 +40,8 @@
         </StackLayout>
 
         <StackLayout id="bottom-page" verticalAlignment="bottom" orientation="horizontal">
-                <Button text="Try It" id="register-button" tap="signIn" horizontalAlignment="left" verticalAlignment="bottom"/>
-                <Button text="Sign In" id="signin-button" horizontalAlignment="right" verticalAlignment="bottom"  />
+                <Button text="Try It" id="register-button" tap="register" horizontalAlignment="left" verticalAlignment="bottom"/>
+                <Button text="Sign In" id="signin-button" tap="signIn" horizontalAlignment="right" verticalAlignment="bottom"  />
         </StackLayout> 
      
 
