@@ -2,9 +2,9 @@ var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 
 var pageData = new Observable();
-pageData.generationData = [
-  { generation: "One", count: 15 },
-  { generation: "Two", count: 10 }
+pageData.dummyData = [
+  { data: "One", count: 15 },
+  { data: "Two", count: 10 }
 ];
 exports.register = function() {
   frameModule.topmost().navigate("views/signup-page/signup");

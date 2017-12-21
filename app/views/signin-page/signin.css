@@ -1,0 +1,25 @@
+#label-actionbar{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 27px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+TextField{
+    font-family: "fontawesome-webfont";
+    padding-top:60px;
+    height: 180px;
+    width: 90%;
+    color:#2699FB; 
+}
+
+#signInPage{
+    height: 90%;
+    width: 100%;
+    background-color: white;
+}
+#bottom-button{
+    height: 10%;
+    background-color: #BCE0FD;
+}

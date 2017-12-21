@@ -20,7 +20,7 @@
                 <chart:PieSeries
                 seriesName="home-pie"
                 selectionMode="none"
-                items="{{ generationData }}"
+                items="{{ dummyData }}"
                 outerRadiusFactor="0.8"
                 valueProperty="count"
                 legendLabel="generation"

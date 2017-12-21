@@ -1,5 +1,22 @@
-<Page>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page">
+    <ActionBar title="Title">
+            <GridLayout>        
+                <label text="Sign In" id="label-actionbar" horizontalAlignment="center" />
+            </GridLayout>
+        </ActionBar> 
     <StackLayout>
-        <label text="lmao"></label>
+        <StackLayout oriantation="vertical" verticalAlignment="top" id="signInPage">
+        
+            <TextField text="{{email}}" id="email"  tap="{{deleteEmail}}"  autocorrect="false" autocapitalizationType="none"/>    
+            <TextField text="{{password}}" id="password" tap="{{deletePassword}}" secure="true" autocorrect="false" autocapitalizationType="none" />
+
+            <Button text="Login" class="loginButton" tap="login"  />
+            
+            <label text="If you don't have a account create on" class="signIn-label" tap="lmao" horizontalAlignment="center"></label>
+
+        </StackLayout>
+        <StackLayout oriantation="vertical" verticalAlignment="bottom" id="bottom-button">
+
+        </StackLayout>
     </StackLayout>
 </Page>

@@ -13,9 +13,9 @@ xmlns:rt="nativescript-rich-textfield">
             <TextField text="{{email}}" id="email" tap="{{deleteEmail}}" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
             <TextField text="{{password}}" id="password" tap="{{deletePassword}}" secure="true"/>
 
-            <Button text="Contnue" id="registration-button" tap="signUp"/>
+            <Button text="Continue" class="loginButton" tap="signUp"/>
 
-            <label text="Already have an Account?" id="signIn-label" tap="signInPage" horizontalAlignment ="center"></label>
+            <label text="Already have an Account?" class="signIn-label" tap="signInPage" horizontalAlignment ="center"></label>
 
         </StackLayout>
         <StackLayout id="bottom-button" oriantation="vertical" verticalAlignment="bottom" tap="goBack" >
