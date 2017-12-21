@@ -12,11 +12,11 @@
 
             <Button text="Login" class="loginButton" tap="login"  />
             
-            <label text="If you don't have a account create on" class="signIn-label" tap="lmao" horizontalAlignment="center"></label>
+            <label text="If you don't have a account create on" class="signIn-label" tap="registrationPage" horizontalAlignment="center"></label>
 
         </StackLayout>
-        <StackLayout oriantation="vertical" verticalAlignment="bottom" id="bottom-button">
-
+        <StackLayout oriantation="vertical" verticalAlignment="bottom" tap="goBack" id="bottom-button">
+            <label text="Go Back" id="label-bottom" horizontalAlignment="center"></label>
         </StackLayout>
     </StackLayout>
 </Page>
