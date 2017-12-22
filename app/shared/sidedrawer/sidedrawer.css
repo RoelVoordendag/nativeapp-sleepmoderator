@@ -16,4 +16,12 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-family: "fontawesome-webfont";
 }
+#circle{
+    width: 20%;
+    height: 20%;
+    background-color: red;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
 

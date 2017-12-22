@@ -1,7 +1,10 @@
 
 <StackLayout class="sidedrawer-left">
                 <StackLayout class="sidedrawer-header">
-                    <Label text="NICK IS EEN NERD" class="sidedrawer-header-brand" />
+                    <StackLayout id="circle" oriantation="vertical" horizontalAlignment= "center" verticalAlignment="center">
+                        <label text="ss"></label>
+                    </StackLayout>
+                    <Label text="" class="sidedrawer-header-brand" />
                 </StackLayout>
                 <StackLayout oriantation="vertical" id="sideMenu">
                     <Label text="&#xf015;   DASHBOARD" class="sidedrawer-list-item-text"  />
