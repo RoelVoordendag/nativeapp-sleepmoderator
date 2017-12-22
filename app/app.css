@@ -32,3 +32,15 @@ button{
     color: #2699FB;
     padding-top: 30px;
 } 
+#label-actionbar{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 27px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+.menu-button{
+	font-family: "fontawesome-webfont";
+	font-size: 30;
+}

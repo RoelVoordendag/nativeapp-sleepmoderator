@@ -1,0 +1,12 @@
+
+<StackLayout class="sidedrawer-left">
+                <StackLayout class="sidedrawer-header">
+                    <Label text="NICK IS EEN NERD" class="sidedrawer-header-brand" />
+                </StackLayout>
+                <StackLayout oriantation="vertical" id="sideMenu">
+                    <Label text="&#xf015;   DASHBOARD" class="sidedrawer-list-item-text"  />
+                    <Label text="&#xf017;   DASHBOARD CLOCK" class="sidedrawer-list-item-text" />
+                    <Label text="&#xf080;   SCOREBOARD" class="sidedrawer-list-item-text"  />
+                    <Label text="&#xf0f3;   NOTIFICATION" class="sidedrawer-list-item-text" />
+                </StackLayout>
+</StackLayout>

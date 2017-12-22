@@ -16,3 +16,6 @@ exports.pageLoaded = function(args) {
 exports.signIn = function(){
   frameModule.topmost().navigate("views/signin-page/signin")
 }
+exports.alwin = function(){
+  frameModule.topmost().navigate("views/data/data");
+}

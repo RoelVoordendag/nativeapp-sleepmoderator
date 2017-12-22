@@ -35,4 +35,7 @@ exports.goBack = function(){
 exports.registrationPage = function(){
     frameModule.topmost().navigate("views/signup-page/signup");
 }
+exports.login = function(){
+    frameModule.topmost().navigate("views/dashboard/dashboard")
+}
 
