@@ -2,6 +2,7 @@
         xmlns:shared="shared/sidedrawer"
         xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-pro-ui/sidedrawer" 
         xmlns:ui="nativescript-animated-circle"
+        xmlns:title = "nativescript-pro-ui/title-style"
         xmlns:gauge="nativescript-pro-ui/gauges"
         loaded="pageLoaded" 
         class="page"
@@ -53,9 +54,9 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout orientation="horizontal" verticalAlignment="top" id="middle">
-                <StackLayout id="slepText" horizontalAlignment="left" >
-                    <label text="Deep Sleep" id="time-slept"></label>
-                    <label text="{{deepSleepText}}" id="main-text"></label>
+                <StackLayout id="gaugeSlept" horizontalAlignment="left"  >
+                    <label text="Deep Sleep" id="healty-sleep-header"></label>
+                    <label text="{{deepSleepText}}" id="healty-main-text"></label>
                 </StackLayout>
                 <StackLayout  id="gaugeSlept" horizontalAlignment="right" >
                     <gauge:RadRadialGauge id="DeepSleepGauge" margin="10">
@@ -67,12 +68,12 @@
                                         <gauge:RadialScale.indicators>  
                                             <gauge:RadialBarIndicator minimum="0" maximum="100" location="1">
                                                 <gauge:RadialBarIndicator.indicatorStyle>
-                                                    <gauge:BarIndicatorStyle fillColor="#BCE0FD" barWidth="0.4"/>
+                                                    <gauge:BarIndicatorStyle fillColor="#7FC4FD" barWidth="0.4"/>
                                                 </gauge:RadialBarIndicator.indicatorStyle>
                                             </gauge:RadialBarIndicator>
                                             <gauge:RadialBarIndicator minimum="0" maximum="0"  location="1" isAnimated="true">
                                                 <gauge:RadialBarIndicator.indicatorStyle>
-                                                    <gauge:BarIndicatorStyle cap="Round" fillColor="#2699FB" barWidth="0.4"/>
+                                                    <gauge:BarIndicatorStyle cap="Round" fillColor="#FFFFFF" barWidth="0.4"/>
                                                 </gauge:RadialBarIndicator.indicatorStyle>
                                             </gauge:RadialBarIndicator>
                                         </gauge:RadialScale.indicators>

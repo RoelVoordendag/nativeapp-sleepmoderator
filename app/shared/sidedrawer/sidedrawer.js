@@ -14,8 +14,8 @@ exports.toggleDrawer = function() {
 exports.goToDashboard = function(){
     frameModule.topmost().navigate("views/dashboard/dashboard");
 };
-exports.goToAlarm = function(){
-    frameModule.topmost().navigate("views/alarm/alarm");
+exports.goToProfile = function(){
+    frameModule.topmost().navigate("views/profile/profile");
 };
 exports.goToScore =  function(){
     frameModule.topmost().navigate("views/scoreboard/scoreboard");

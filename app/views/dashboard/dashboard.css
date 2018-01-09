@@ -2,19 +2,18 @@ label{
     margin-left:20px;
 }
 #top{
-    height: 33%;
+    height: 50%;
     /* width: 100%; */
     background-color: white;
 }
 #middle{
-    height: 34%;
+    height: 50%;
     width: 100%;
-    background-color: #F1F9FF;
+    background-color: #2699FB;
 }
 #bottom{
     height: 33%;
     width: 100%;
-    background-color: #2699FB;
 }
 
 #gaugeSlept{
@@ -25,13 +24,16 @@ label{
 #slepText{
     height: 100%;
     width: 50%;
-  
+    font-size:100px;
 }
 #time-slept{
+    padding-top:100px;
     color: #2699FB;
     margin-top:20px;
+    font-size: 28px;
 }
 #main-text{
+    font-size:100px;
     color: #2699FB;
     margin-top: 20px;
     white-space: normal;
@@ -40,6 +42,8 @@ label{
     font-weight: lighter;
 }
 #healty-sleep-header{
+    font-size:28px;
+    padding-top:100px;
     margin-top:20px;
     color: white;    
 }

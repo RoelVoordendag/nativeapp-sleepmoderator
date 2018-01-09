@@ -73,7 +73,7 @@ function onNavigatedTo(args) {
     var scale = gaugeView.scales.getItem(0);
     var barIndicator = scale.indicators.getItem(1);
             
-    barIndicator.maximum =  50;
+    barIndicator.maximum =  80;
 
     //Deep sleep Section Gauge
     var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
