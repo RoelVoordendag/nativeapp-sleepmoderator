@@ -43,4 +43,5 @@ button{
 .menu-button{
 	font-family: "fontawesome-webfont";
 	font-size: 30;
+	padding-right: 25px;
 }

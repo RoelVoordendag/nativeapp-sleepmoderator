@@ -1,15 +1,20 @@
 
-<StackLayout class="sidedrawer-left">
-                <StackLayout class="sidedrawer-header">
-                    <StackLayout id="circle" oriantation="vertical" horizontalAlignment= "center" verticalAlignment="center">
-                        <label text="ss"></label>
-                    </StackLayout>
-                    <Label text="" class="sidedrawer-header-brand" />
-                </StackLayout>
+<StackLayout class="sidedrawer-left" >
+                <!-- <StackLayout class="sidedrawer-header" oriantation="horizontal"> -->
+
+
+                                
+                <StackLayout class="sidedrawer-header" verticalAlignment="bottom" orientation="horizontal">
+                        <StackLayout id="circle" horizontalAlignment="left" verticalAlignment="center" oriantation="horizontal"> -->
+                             <label id="label-circle" text="&#xf007;" verticalAlignment="center" horizontalAlignment="center"></label> -->
+                       </StackLayout> 
+                       <label text="{{name}}" id="person" verticalAlignment="center" horizontalAlignment="right"></label>
+                </StackLayout> 
+
                 <StackLayout oriantation="vertical" id="sideMenu">
-                    <Label text="&#xf015;   DASHBOARD" class="sidedrawer-list-item-text"  />
-                    <Label text="&#xf017;   DASHBOARD CLOCK" class="sidedrawer-list-item-text" />
-                    <Label text="&#xf080;   SCOREBOARD" class="sidedrawer-list-item-text"  />
-                    <Label text="&#xf0f3;   NOTIFICATION" class="sidedrawer-list-item-text" />
+                    <Label text="&#xf015;   DASHBOARD" class="sidedrawer-list-item-text" tap="goToDashboard"  />
+                    <Label text="&#xf017;   DASHBOARD CLOCK" class="sidedrawer-list-item-text" tap="goToAlarm" />
+                    <Label text="&#xf080;   SCOREBOARD" class="sidedrawer-list-item-text" tap="goToScore" />
+                    <Label text="&#xf0f3;   NOTIFICATION" class="sidedrawer-list-item-text" tap="goToNotification"/>
                 </StackLayout>
 </StackLayout>

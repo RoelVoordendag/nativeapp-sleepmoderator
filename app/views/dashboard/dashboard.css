@@ -1,0 +1,53 @@
+label{
+    margin-left:20px;
+}
+#top{
+    height: 33%;
+    /* width: 100%; */
+    background-color: white;
+}
+#middle{
+    height: 34%;
+    width: 100%;
+    background-color: #F1F9FF;
+}
+#bottom{
+    height: 33%;
+    width: 100%;
+    background-color: #2699FB;
+}
+
+#gaugeSlept{
+  width: 50%;
+  height: 100%;
+
+}
+#slepText{
+    height: 100%;
+    width: 50%;
+  
+}
+#time-slept{
+    color: #2699FB;
+    margin-top:20px;
+}
+#main-text{
+    color: #2699FB;
+    margin-top: 20px;
+    white-space: normal;
+    line-height: 2px;
+    font-size: 14px; 
+    font-weight: lighter;
+}
+#healty-sleep-header{
+    margin-top:20px;
+    color: white;    
+}
+#healty-main-text{
+    color:white;
+    margin-top: 20px;
+    white-space: normal;
+    line-height: 2px;
+    font-size: 14px; 
+    font-weight: lighter;
+}

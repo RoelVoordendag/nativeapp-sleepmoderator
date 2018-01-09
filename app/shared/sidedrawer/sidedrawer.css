@@ -2,6 +2,7 @@
 .sidedrawer-header{
     height: 20%;
     background-color: #BCE0FD;
+    width: 100%;
 }
 #sideMenu{
     height: 100%;
@@ -16,12 +17,51 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-family: "fontawesome-webfont";
 }
-#circle{
-    width: 20%;
-    height: 20%;
-    background-color: red;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-}
+/* #circle{
+    width: 200px;
+    height: 200px;
+    background-color: #2699FB;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    color: white;
+} */
 
+#circle{
+    font-family: "fontawesome-webfont";
+    font-size: 32px;
+    width: 200px;
+    height: 200px;
+    background-color: #2699FB;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    color: white;
+    margin-left: 60px;
+}
+#wrapper{
+    width: 50%;
+    height: 100%;
+    padding-top: 55px;
+    padding-left: 100px;
+}
+#textbox{
+    background-color:tomato;
+    width: 40%;
+    height: 100%
+}
+#label-circle{
+    font-family: "fontawesome-webfont";
+    font-size: 32px;
+
+}
+#person{
+    padding-left: 50px;
+    color:white;
+    font-size: 16;
+    width: 500px;
+    height: 300px;
+    margin-top:50%;
+    white-space: normal;
+    line-height: 1px;
+}
