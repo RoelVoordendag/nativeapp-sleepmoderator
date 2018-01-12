@@ -6,6 +6,7 @@ var http = require("http");
 var pageData = new Observable();
 var apidata;
 var obj;
+
     
 //this function starts when the page is loaded
 function pageLoaded(args) {
@@ -29,6 +30,8 @@ function pageLoaded(args) {
         console.log(e);
     });
 
+
+    
 }
 
 exports.pageLoaded = pageLoaded;
