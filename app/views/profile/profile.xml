@@ -1,5 +1,6 @@
 <Page   xmlns:shared="app/shared"
         xmlns:shared="shared/sidedrawer"
+        xmlns:chart="nativescript-pro-ui/chart"
         xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-pro-ui/sidedrawer" 
         xmlns:ui="nativescript-animated-circle"
         loaded="pageLoaded" 
@@ -15,14 +16,63 @@
     </ActionBar> 
 
 
-<!-- tap="toggleDrawer" -->
     <sd:RadSideDrawer id="sideDrawer">
         <sd:RadSideDrawer.drawerContent>
             <shared:sidedrawer />
         </sd:RadSideDrawer.drawerContent>
         <sd:RadSideDrawer.mainContent>
-
-            
+        <StackLayout orientation="vertical">
+            <StackLayout id="top" orientation="vertical" verticalAlignment="top">
+                <StackLayout id="icon">
+                    <label id="icon-person" text="&#xf007;" fontSize="85" verticalAlignment="center" horizontalAlignment="center"></label>
+                </StackLayout>
+                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                   <StackLayout id="sleep"> </StackLayout> <label text=" Sleep      "></label>
+                     <StackLayout id="deepSleep"> </StackLayout> <label text=" Deep Sleep"></label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout verticalAlignment="bottom" id="graph" orientation="vertical">
+                <chart:RadCartesianChart class="m-t-5" height="100%" width="100%" >
+                    <chart:RadCartesianChart.series>
+                        <chart:BarSeries 
+                            selectionMode="none"
+                            seriesName ="sleep"
+                            stackMode="Stack"
+                            items="{{ sleepData }}"
+                            categoryProperty="day"
+                            valueProperty="hours"
+                            showLabels="false"/>                                           
+                            <chart:BarSeries
+                            selectionMode="none"
+                            seriesName ="deepSleep"
+                            stackMode="Stack    "
+                            items="{{ deepSleep }}"
+                            categoryProperty="day"
+                            valueProperty="hours"
+                            showLabels="false">
+                        </chart:BarSeries>
+                        <chart:RadCartesianChart.palettes>
+                        <chart:Palette seriesName="sleep">
+                            <chart:Palette.entries>
+                                <chart:PaletteEntry fillColor="#2699FB" strokeColor="#2699FB"/>
+                            </chart:Palette.entries>
+                        </chart:Palette>
+                        <chart:Palette seriesName="deepSleep">
+                            <chart:Palette.entries>
+                                <chart:PaletteEntry fillColor="#BCE0FD" strokeColor="#BCE0FD"/>
+                            </chart:Palette.entries>
+                        </chart:Palette>
+                    </chart:RadCartesianChart.palettes>
+                        <chart:BarSeries.horizontalAxis>
+                            <chart:CategoricalAxis labelFitMode="Rotate" labelTextColor="#2699FB" lineHidden="true" />
+                            </chart:BarSeries.horizontalAxis>
+                            <chart:BarSeries.verticalAxis>
+                            <chart:LinearAxis  labelTextColor="#2699FB" lineThickness="1" lineHidden="true" />
+                        </chart:BarSeries.verticalAxis>
+                    </chart:RadCartesianChart.series>
+                    </chart:RadCartesianChart>
+            </StackLayout>
+            </StackLayout>
         </sd:RadSideDrawer.mainContent>
     </sd:RadSideDrawer>
 </Page>

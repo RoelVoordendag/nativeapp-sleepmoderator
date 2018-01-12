@@ -16,10 +16,19 @@ function pageLoaded(args){
     var name = view.getViewById(page, "name");
 
     page.bindingContext = {
-        name:  "Roel Voordendag"
-    }
-
-
+        name:  "Roel Voordendag",
+    
+    sleepData : [
+        { day:"Maandag", hours:2 , test: 2 }, { day:"Dinsdag", hours: 8 }, { day: "Woensdag",hours: 9 },
+        { day: "Donderdag", hours: 8 }, { day:"Vrijdag", hours: 7 },{ day: "Zaterdag", hours: 8 },
+        { day: "Zondag", hours: 7.5 }
+      ],
+      deepSleep : [
+          { day:"Maandag", hours: 2}, { day:"Dinsdag", hours: 5 }, { day: "Woensdag",hours: 2 },
+          { day: "Donderdag", hours: 4 }, { day:"Vrijdag", hours: 3 },{ day: "Zaterdag", hours:5 },
+          { day: "Zondag", hours: 2.2 }
+      ]
+    };
 }
 exports.pageLoaded = pageLoaded;
 
