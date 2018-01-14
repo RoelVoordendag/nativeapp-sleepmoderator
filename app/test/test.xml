@@ -1,0 +1,119 @@
+<Page   xmlns:shared="app/shared"
+        xmlns:shared="shared/sidedrawer"
+        xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-pro-ui/sidedrawer" 
+        xmlns:ui="nativescript-animated-circle"
+        xmlns:title = "nativescript-pro-ui/title-style"
+        xmlns:gauge="nativescript-pro-ui/gauges"
+        loaded="pageLoaded" 
+        class="page"
+        navigatedTo="onNavigatedTo"
+        >
+
+    <ActionBar title="Title">
+        <GridLayout>        
+            <label text="Dashboard" id="label-actionbar" horizontalAlignment="center" />
+            <label text="&#xf0c9;" class="menu-button" tap="toggleDrawer" horizontalAlignment= "left" verticalAlignment="center"/>
+            <label text="&#xf08b;" class="menu-button" tap="logOut" horizontalAlignment="right" verticalAlignment="center"></label>
+        </GridLayout>
+    </ActionBar> 
+
+<!-- tap="toggleDrawer" -->
+    <sd:RadSideDrawer id="sideDrawer">
+        <sd:RadSideDrawer.drawerContent>
+            <shared:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
+        <sd:RadSideDrawer.mainContent>
+        <StackLayout >
+            <StackLayout id="top" orientation="horizontal">   
+                <StackLayout  id="gaugeSlept" horizontalAlignment="left" >
+                    <gauge:RadRadialGauge id="gaugeView" margin="10">
+                        <gauge:RadRadialGauge.scales>
+                        <gauge:RadialScale startAngle="0" sweepAngle="360" minimum="0" maximum="100" radius="0.9">
+                            <gauge:RadialScale.scaleStyle>
+                                <gauge:ScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0" />
+                                    </gauge:RadialScale.scaleStyle>
+                                        <gauge:RadialScale.indicators>  
+                                            <gauge:RadialBarIndicator minimum="0" maximum="100" location="1">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle fillColor="#BCE0FD" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                            <gauge:RadialBarIndicator minimum="0" maximum="0"  location="1" isAnimated="true">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle cap="Round" fillColor="#2699FB" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                        </gauge:RadialScale.indicators>
+                                    </gauge:RadialScale>
+                                </gauge:RadRadialGauge.scales>
+                            </gauge:RadRadialGauge>
+                    </StackLayout>
+                    <StackLayout id="slepText" horizontalAlignment="right" >
+                        <label text="Time Slept" id="time-slept"></label>
+                        <label text="{{timeSleptText}}" id="main-text"></label>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout orientation="horizontal" verticalAlignment="top" id="middle">
+                <StackLayout id="gaugeSlept" horizontalAlignment="left"  >
+                    <label text="Deep Sleep" id="healty-sleep-header"></label>
+                    <label text="{{deepSleepText}}" id="healty-main-text"></label>
+                </StackLayout>
+                <StackLayout  id="gaugeSlept" horizontalAlignment="right" >
+                    <gauge:RadRadialGauge id="DeepSleepGauge" margin="10">
+                        <gauge:RadRadialGauge.scales>
+                        <gauge:RadialScale startAngle="0" sweepAngle="360" minimum="0" maximum="100" radius="0.9">
+                            <gauge:RadialScale.scaleStyle>
+                                <gauge:ScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0" />
+                                    </gauge:RadialScale.scaleStyle>
+                                        <gauge:RadialScale.indicators>  
+                                            <gauge:RadialBarIndicator minimum="0" maximum="100" location="1">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle fillColor="#7FC4FD" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                            <gauge:RadialBarIndicator minimum="0" maximum="0"  location="1" isAnimated="true">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle cap="Round" fillColor="#FFFFFF" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                        </gauge:RadialScale.indicators>
+                                    </gauge:RadialScale>
+                                </gauge:RadRadialGauge.scales>
+                            </gauge:RadRadialGauge>
+                    </StackLayout>                
+                </StackLayout>
+                <StackLayout orientation="horizontal" verticalAlignment= "top" id="bottom">
+                    <StackLayout  id="gaugeSlept" horizontalAlignment="left" >
+                    <gauge:RadRadialGauge id="healtySleepGauge" margin="10">
+                        <gauge:RadRadialGauge.scales>
+                        <gauge:RadialScale startAngle="0" sweepAngle="360" minimum="0" maximum="100" radius="0.9">
+                            <gauge:RadialScale.scaleStyle>
+                                <gauge:ScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0" />
+                                    </gauge:RadialScale.scaleStyle>
+                                        <gauge:RadialScale.indicators>  
+                                            <gauge:RadialBarIndicator minimum="0" maximum="100" location="1">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle fillColor="#7FC4FD" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                            <gauge:RadialBarIndicator minimum="0" maximum="0"  location="1" isAnimated="true">
+                                                <gauge:RadialBarIndicator.indicatorStyle>
+                                                    <gauge:BarIndicatorStyle cap="Round" fillColor="#FFFFFF" barWidth="0.4"/>
+                                                </gauge:RadialBarIndicator.indicatorStyle>
+                                            </gauge:RadialBarIndicator>
+                                        </gauge:RadialScale.indicators>
+                                    </gauge:RadialScale>
+                                </gauge:RadRadialGauge.scales>
+                            </gauge:RadRadialGauge>
+                    </StackLayout>
+                    <StackLayout id="slepText" horizontalAlignment="right" >
+                        <label text="Healty Sleep" id="healty-sleep-header"></label>
+                        <label text="{{healtySleepText}}" id="healty-main-text"></label>
+                    </StackLayout>
+                  
+                </StackLayout>
+            </StackLayout>
+        </sd:RadSideDrawer.mainContent>
+    </sd:RadSideDrawer>
+
+</Page>

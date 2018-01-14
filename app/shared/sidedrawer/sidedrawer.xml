@@ -12,7 +12,7 @@
                 </StackLayout> 
 
                 <StackLayout oriantation="vertical" id="sideMenu">
-                    <Label text="&#xf015;   DASHBOARD" class="sidedrawer-list-item-text" tap="goToDashboard"  />
+                    <Label text="&#xf015;   Dashboard" class="sidedrawer-list-item-text" tap="goToDashboard"  />
                     <Label text="&#xf007;   Profile" class="sidedrawer-list-item-text" tap="goToProfile" />
                     <Label text="&#xf080;   SCOREBOARD" class="sidedrawer-list-item-text" tap="goToScore" />
                     <Label text="&#xf0f3;   NOTIFICATION" class="sidedrawer-list-item-text" tap="goToNotification"/>
