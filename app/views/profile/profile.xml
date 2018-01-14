@@ -11,7 +11,7 @@
         <GridLayout>        
             <label text="Profile" id="label-actionbar" horizontalAlignment="center" />
             <label text="&#xf0c9;" class="menu-button" tap="toggleDrawer" horizontalAlignment= "left" verticalAlignment="center"/>
-            <label text="&#xf08b;" class="menu-button" tap="logout" horizontalAlignment="right" verticalAlignment="center"></label>
+            <label text="&#xf08b;" class="menu-button" tap="logOut" horizontalAlignment="right" verticalAlignment="center"></label>
         </GridLayout>
     </ActionBar> 
 

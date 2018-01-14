@@ -1,6 +1,8 @@
 var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
+var dialogs = require("ui/dialogs");
+
 
 var drawer;
 
@@ -8,6 +10,21 @@ var pageData =  new Observable();
 
 //function starts wen page is loaded
 function pageLoaded(args){
+    //checking if you are logged in
+    if(!global.logout){
+        console.log('er is iemand ingelogd');
+    }else{
+        //popup message
+        dialogs.alert({
+            title: "Not logged in",
+            message: "You must be logged in to be on this page. Please log in",
+            okButtonText: "OK"
+        }).then(function () {
+            console.log("Dialog closed!");
+        });
+
+        frameModule.topmost().navigate('views/signin-page/signin');
+    }
     console.log('dit is het id waarmee je bent ingelodg' + global.loginId);
     //var for the objects in the page
     var page = args.object;
@@ -39,6 +56,9 @@ exports.toggleDrawer = function() {
     drawer.toggleDrawerState();
 };
 
-exports.logout = function(){
-    console.log('lmao')
+exports.logOut = function(){
+    global.logout = 1;
+
+    frameModule.topmost().navigate('views/signin-page/signin');
+
 }
