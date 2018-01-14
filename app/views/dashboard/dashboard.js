@@ -3,156 +3,190 @@ var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
 var dialogs = require("ui/dialogs");
 var http = require("http");
-
 var drawer;
-
 var pageData =  new Observable();
+var observableModule = require("data/observable");
 
-//function starts wen page is loaded
+//global for passing data
+var timeSleptTextPlaceholder = "Geslapen Text Placeholder";
+var deepSleepTextPlaceholder = " ";
+var latestSession;
+var latestSessionId;
+
+
+
 function pageLoaded(args){
-    //var for the objects in the page
-    var page = args.object;
 
-    //getting data from login page
-    var data = page.navigationContext;
-    //data.userId is the id of the login user 
-    //this is variable to check if user is logged in
-    global.loginId = data.userId;
+    //Login check and user id pass
+        //var for the objects in the page
+        var page = args.object;
 
-    //checking if you are logged in
-    if(global.logout){
-        dialogs.alert({
-            title: "Not logged in",
-            message: "You must be logged in to be on this page. Please log in",
-            okButtonText: "OK"
-        }).then(function () {
-            console.log("Dialog closed!");
-        });
+        //getting data from login page
+        var data = page.navigationContext;
+        
+        //data.userId is the id of the login user 
+        //this is variable to check if user is logged in
+        global.loginId = data.userId;
 
-        frameModule.topmost().navigate('views/signin-page/signin');
-    }
+        //checking if you are logged in
+        if(global.logout){
+            dialogs.alert({
+                title: "Not logged in",
+                message: "You must be logged in to be on this page. Please log in",
+                okButtonText: "OK"
+            }).then(function () {
+                console.log("Dialog closed!");
+            });
 
+            frameModule.topmost().navigate('views/signin-page/signin');
+        }
+
+    //Sidedrawer            
     drawer = view.getViewById(page, "sideDrawer");
-
-    //timeslept section
-    var timeSleptText = view.getViewById(page, "timeSleptText");
-    var deepSleepText = view.getViewById(page, "deepSleepText");
-    var healtySleepText = view.getViewById(page, "healtySleepText");
-    var name = view.getViewById(page, "name");
-
-
-    //give the var data for on the page
-    var lmao= false;
-    //with this if statemant we can show people a message based on their 
-    //sleep time this we can repeat with other functies
-    if(!lmao){
-        page.bindingContext = {
-            timeSleptText: "You slept to short last night",
-            deepSleepText: "You had around 2 hours of deep sleep",
-            healtySleepText: "You did not have enough sleep last night try to go to bed earlier",
-            name:  "Roel Voordendag"
-        }
-    }
-    if(lmao){
-        page.bindingContext = { 
-            timeSleptText: "test 322",
-            deepSleepText: "test 322",
-            healtySleepText: "test 322",
-            
-
-        }
-    }
-
 
 }
 exports.pageLoaded = pageLoaded;
 
 
+    //Please add some more comments Roel I have no idea what is going on
+        exports.toggleDrawer = function() {
+            drawer.toggleDrawerState();
+        };
 
-exports.toggleDrawer = function() {
-    drawer.toggleDrawerState();
-};
-//for he graphgs we need to make a calculation 
-// exports.login = function(){
-//     drawer.toggleDrawerState();
-// };
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var frameModule = require("tns-core-modules/ui/frame");
-// >>W0gPSBNYXRoLnJhbmRvbSgpICogMTAwO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufSJdfQ== gauges-indicators-bars-animate
+        "use strict";
+        Object.defineProperty(exports, "__esModule", { value: true });
+        var frameModule = require("tns-core-modules/ui/frame");
+        // >>W0gPSBNYXRoLnJhbmRvbSgpICogMTAwO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufSJdfQ== gauges-indicators-bars-animate
+
 function onNavigatedTo(args) {
 
-    //time Slept Gauge 
+    var page = args.object;
 
-    //getting Gauge
-    var gaugeView = frameModule.topmost().getViewById("gaugeView");
-    
-    timeSlept = 7;
-    //creating title
-    gaugeView.title = timeSlept + "H";
-    //getting indicators to tell how far it need to go
-    var scale = gaugeView.scales.getItem(0);
-    var barIndicator = scale.indicators.getItem(1);
-            
-    barIndicator.maximum =  80;
+    //get latest session, store as global var
+    http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId).then(function (r){
+        console.log("latest session plz"+r[r.length-1])
+        var latestSession = r[r.length-1];
+        var latestSessionId = r[r.length-1].id;
 
-    //Deep sleep Section Gauge
-    var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
-    deepSleep = 3;
-    //title
-    deepSleepGauge.title = deepSleep + "H";
-    //indicator
-    var deepScale = deepSleepGauge.scales.getItem(0);
-    var indicatorDeepSleep = deepScale.indicators.getItem(1);
+        console.log("the latest session id is " +latestSessionId);
+        console.log("latest sessions total sleep is "+latestSession.total_sleep);
 
-    indicatorDeepSleep.maximum = 40;
+        //Check if the latest session's sleep total is undefined, start calculation
+        if (latestSession.total_sleep == "") {
 
-    //Healty Sleep Section
-    var healtySleepGauge = frameModule.topmost().getViewById("healtySleepGauge");
-    healtySleep = 8;
-    //title
-    healtySleepGauge.title = healtySleep + "H";
-    //indicator
-    var healtyScale= healtySleepGauge.scales.getItem(0);
-    var indicatorHealtySleep = healtyScale.indicators.getItem(1);
+               console.log("ik voer de functie uit");
+            //Calculate sleep hours
+            http.getJSON("http://markvonk.com/sleep/heartrates.php?user="+loginId+"&session="+latestSessionId).then(function (r) {
+                    
+                //Set total hours slept
+                var startdate = r[0].date;
+                var starttime = startdate.substr(startdate.length - 8);
+                var starttime = starttime.substr(0, 5);
+                var enddate = r[r.length-1].date;
+                var endtime = enddate.substr(enddate.length - 8);
+                var endtime = endtime.substr(0, 5);
 
-    indicatorHealtySleep.maximum = 80;
-    
-    //Sleep Calculation
-    
-    //Get all sessions from this user
+                console.log(starttime);
+                console.log(endtime);
 
-    //Latest session
+                var dif = ( new Date("1970-1-1 " + endtime) - new Date("1970-1-1 " + starttime) ) / 1000 / 60 / 60;
+                var totaltimeslept = Math.round( dif * 10 ) / 10;                    
 
-        http.getJSON("http://markvonk.com/sleep/heartrates.php?user=1&session=1").then(function (r) {
-            // Argument (r) is JSON!   
+                //Calculate deep sleep
+                    //get bpm from session
+                    //calculate when bpm is x amount lower than startpoint bpm for a certain amount of time
+                    //this is fucking impossible
+                //Set deep sleep
 
-            //Already calculated?
+                //Push sleep hours to the database of this session
+                    //nog te maken: totaldeep, score   
+                http.getJSON("http://markvonk.com/sleep/updateSession.php?session_id="+latestSessionId+"&user_id="+loginId+"&date=date&sleep_start="+starttime+"&sleep_end="+endtime+"&total_sleep="+totaltimeslept+"&total_deep=00:00&score=1337").then(function (r) {
+                    var emptyfunction = "notsogoodbutdontknowotherway";
+                }, function (e) {
+                    var apidata = e;
+                    console.log(e);
+                });
 
-            //Set total hours slept
-            var startdate = r[0].date;
-            var startime = startdate.substr(startdate.length - 8);
-            var starttime = startime.substr(1, 5);
-            var enddate = r[r.length-1].date;
-            var endtime = enddate.substr(enddate.length - 8);
-            var endtime = endtime.substr(1, 5);
+            }, function (e) {
+                var apidata = e;
+                console.log(e);
+            });
 
-            var dif = ( new Date("1970-1-1 " + endtime) - new Date("1970-1-1 " + starttime) ) / 1000 / 60 / 60;
+        }
 
-            console.log(dif);
+        //now that the data is saved (if it wasn't already), get the processed data from the users latest session
+        http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId+"&session="+latestSessionId).then(function (r) {
+            //save the data in vars to be used by the page
+            var totaltimeslept = r[0].total_sleep;
+            var totaldeepsleep = r[0].total_deep;
+
+            console.log("total time slept from db is "+totaltimeslept);
+            console.log("total deep slept from db is "+totaldeepsleep);
+
+            //total time Slept Gauge 
+
+            //getting Gauge
+            var gaugeView = frameModule.topmost().getViewById("gaugeView");
+
+            //Calculate percentage for total sleep bar
+            var targettotalslept = 7.5;
+
+            var percentagetotalslept = (totaltimeslept / targettotalslept) * 100;
+
+            if (percentagetotalslept > 100){
+                percentagetotalslept = 100;
+            }
+
+            //Set message on the side                
+            if(totaltimeslept >= targettotalslept){
+                timeSleptTextPlaceholder = "That was a great night, keep it up!" 
+            } else if (totaltimeslept >= 6){                    
+                timeSleptTextPlaceholder = "Almost there, try to go to bed a little sooner tonight"
+            } else if (totaltimeslept < 6){
+                timeSleptTextPlaceholder = "You didn't sleep enough last night"
+            }
+            //Set total time slept for gauge
+            timeSlept = totaltimeslept;
+            //create title in the gauge middle
+            gaugeView.title = timeSlept + "H";
+            //getting indicators to tell how far the bar goes
+            var scale = gaugeView.scales.getItem(0);
+            var barIndicator = scale.indicators.getItem(1);
+                                
+            barIndicator.maximum =  percentagetotalslept;
 
 
-            //Calculate deep sleep
+            //Deep sleep Section Gauge
+            var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
+            deepSleep = 3;
+            //title
+            deepSleepGauge.title = deepSleep + "H";
+            //indicator
+            var deepScale = deepSleepGauge.scales.getItem(0);
+            var indicatorDeepSleep = deepScale.indicators.getItem(1);
 
-            //Set deep sleep
-                     
-        }, function (e) {
-            //// Argument (e) is Error!
+            indicatorDeepSleep.maximum = 40;    
+                    
+            //set the messages that need to be shown on the page
+            var sleeptext = new observableModule.fromObject({
+                timeSleptText : [timeSleptTextPlaceholder],
+                deepSleepText : [deepSleepTextPlaceholder]
+            });
+
+            page.bindingContext = sleeptext;     
+
+        }, function (e) {        
             var apidata = e;
             console.log(e);
-        });
-   
+        });        
+            
+    }, function (e) {
+
+        var apidata = e;
+        console.log(e);
+
+    });
 }
 exports.onNavigatedTo = onNavigatedTo;
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbInRlc3QudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSx1REFBMEQ7QUFFMUQsb0NBQW9DO0FBQ3BDLHVCQUE4QixJQUFJO0lBQzlCLElBQUksU0FBUyxHQUE2RCxXQUFXLENBQUMsT0FBTyxFQUFFLENBQUMsV0FBVyxDQUFDLFdBQVcsQ0FBQyxDQUFDO0lBQ3pILFNBQVMsQ0FBQyxLQUFLLEdBQUUsS0FBSyxDQUFDO0lBQ3ZCLElBQUksSUFBSSxHQUE2RCxXQUFXLENBQUMsT0FBTyxFQUFFLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQzlHLElBQUksQ0FBQyxLQUFLLEdBQUUsT0FBTyxDQUFBO0lBQ25CLHNDQUFzQztJQUN0QyxJQUFJLEtBQUssR0FBdUQsU0FBUyxDQUFDLE1BQU0sQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDNUYsR0FBRyxDQUFDLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxLQUFLLENBQUMsVUFBVSxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFBRSxDQUFDO1FBQy9DLElBQUksWUFBWSxHQUFxRSxLQUFLLENBQUMsVUFBVSxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUNqSCxFQUFFLENBQUMsQ0FBQyxZQUFZLENBQUMsT0FBTyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7WUFDNUIsWUFBWSxDQUFDLE9BQU8sR0FBRyxJQUFJLENBQUMsTUFBTSxFQUFFLEdBQUcsR0FBRyxDQUFDO1FBQy9DLENBQUM7SUFDTCxDQUFDO0FBQ0wsQ0FBQztBQWJELHNDQWFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGZyYW1lTW9kdWxlID0gcmVxdWlyZShcInRucy1jb3JlLW1vZHVsZXMvdWkvZnJhbWVcIik7XHJcbmltcG9ydCBnYXVnZXNNb2R1bGUgPSByZXF1aXJlKFwibmF0aXZlc2NyaXB0LXByby11aS9nYXVnZXNcIik7XHJcbi8vID4+IGdhdWdlcy1pbmRpY2F0b3JzLWJhcnMtYW5pbWF0ZVxyXG5leHBvcnQgZnVuY3Rpb24gb25OYXZpZ2F0ZWRUbyhhcmdzKSB7XHJcbiAgICBsZXQgZ2F1Z2VWaWV3OiBnYXVnZXNNb2R1bGUuUmFkUmFkaWFsR2F1Z2UgPSA8Z2F1Z2VzTW9kdWxlLlJhZFJhZGlhbEdhdWdlPmZyYW1lTW9kdWxlLnRvcG1vc3QoKS5nZXRWaWV3QnlJZChcImdhdWdlVmlld1wiKTtcclxuICAgIGdhdWdlVmlldy50aXRsZSA9XCJob2lcIjtcclxuICAgIGxldCBsbWFvOiBnYXVnZXNNb2R1bGUuUmFkUmFkaWFsR2F1Z2UgPSA8Z2F1Z2VzTW9kdWxlLlJhZFJhZGlhbEdhdWdlPmZyYW1lTW9kdWxlLnRvcG1vc3QoKS5nZXRWaWV3QnlJZChcInlvd1wiKTtcclxuICAgIGxtYW8udGl0bGUgPVwibG9sb2xcIlxyXG4gICAgLy8gZ2F1Z2VWaWV3LnRpdGxlLnN0eWxlLkNvbG9yID1cInJlZFwiO1xyXG4gICAgbGV0IHNjYWxlOiBnYXVnZXNNb2R1bGUuUmFkaWFsU2NhbGUgPSA8Z2F1Z2VzTW9kdWxlLlJhZGlhbFNjYWxlPmdhdWdlVmlldy5zY2FsZXMuZ2V0SXRlbSgwKTtcclxuICAgIGZvciAodmFyIGkgPSAwOyBpIDwgc2NhbGUuaW5kaWNhdG9ycy5sZW5ndGg7IGkrKykge1xyXG4gICAgICAgIGxldCBiYXJJbmRpY2F0b3I6IGdhdWdlc01vZHVsZS5SYWRpYWxCYXJJbmRpY2F0b3IgPSA8Z2F1Z2VzTW9kdWxlLlJhZGlhbEJhckluZGljYXRvcj5zY2FsZS5pbmRpY2F0b3JzLmdldEl0ZW0oaSk7XHJcbiAgICAgICAgaWYgKGJhckluZGljYXRvci5tYXhpbXVtID09IDApIHtcclxuICAgICAgICAgICAgYmFySW5kaWNhdG9yLm1heGltd
