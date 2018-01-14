@@ -11,9 +11,7 @@ var pageData =  new Observable();
 //function starts wen page is loaded
 function pageLoaded(args){
     //checking if you are logged in
-    if(!global.logout){
-        console.log('er is iemand ingelogd');
-    }else{
+    if(global.logout){
         //popup message
         dialogs.alert({
             title: "Not logged in",

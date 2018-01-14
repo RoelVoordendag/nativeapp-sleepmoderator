@@ -20,11 +20,7 @@ function pageLoaded(args){
     global.loginId = data.userId;
 
     //checking if you are logged in
-    if(!global.logout){
-        console.log('er is iemand ingelogd');
-
-
-    }else{
+    if(global.logout){
         dialogs.alert({
             title: "Not logged in",
             message: "You must be logged in to be on this page. Please log in",

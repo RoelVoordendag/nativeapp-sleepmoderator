@@ -2,6 +2,7 @@ var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
 var http = require("http");
+var dialogs = require("ui/dialogs");
 
 var pageData =  new Observable();
 
@@ -55,7 +56,7 @@ function pageLoaded(args){
                         frameModule.topmost().navigate(userData);
 
                     }else{
-                        console.log('eat a dick');
+                        //try something fun here
                     }
 
                     
