@@ -11,6 +11,7 @@ var observableModule = require("data/observable");
 var timeSleptTextPlaceholder = "Geslapen Text Placeholder";
 var deepSleepTextPlaceholder = " ";
 var latestSession;
+var latestBpm;
 var latestSessionId;
 
 
@@ -63,11 +64,12 @@ function onNavigatedTo(args) {
 
     var page = args.object;
 
-    //get latest session, store as global var
+    //get latest session
     http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId).then(function (r){
         console.log("latest session plz"+r[r.length-1])
         var latestSession = r[r.length-1];
-        var latestSessionId = r[r.length-1].id;
+        console.dir(latestSession);
+        var latestSessionId = r[r.length-1].session_id;
 
         console.log("the latest session id is " +latestSessionId);
         console.log("latest sessions total sleep is "+latestSession.total_sleep);
@@ -117,6 +119,7 @@ function onNavigatedTo(args) {
 
         //now that the data is saved (if it wasn't already), get the processed data from the users latest session
         http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId+"&session="+latestSessionId).then(function (r) {
+            console.dir(r[0]);
             //save the data in vars to be used by the page
             var totaltimeslept = r[0].total_sleep;
             var totaldeepsleep = r[0].total_deep;
