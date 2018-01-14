@@ -1,6 +1,7 @@
 var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
+var http = require("http");
 
 var drawer;
 
@@ -97,6 +98,39 @@ function onNavigatedTo(args) {
 
     indicatorHealtySleep.maximum = 80;
     
+    //Sleep Calculation
+    
+    //Get all sessions from this user
+
+    //Latest session
+
+        http.getJSON("http://markvonk.com/sleep/heartrates.php?user=1&session=1").then(function (r) {
+            // Argument (r) is JSON!   
+
+            //Already calculated?
+
+            //Set total hours slept
+            var startdate = r[0].date;
+            var startime = startdate.substr(startdate.length - 8);
+            var starttime = startime.substr(1, 5);
+            var enddate = r[r.length-1].date;
+            var endtime = enddate.substr(enddate.length - 8);
+            var endtime = endtime.substr(1, 5);
+
+            var dif = ( new Date("1970-1-1 " + endtime) - new Date("1970-1-1 " + starttime) ) / 1000 / 60 / 60;
+
+            console.log(dif);
+
+
+            //Calculate deep sleep
+
+            //Set deep sleep
+                     
+        }, function (e) {
+            //// Argument (e) is Error!
+            var apidata = e;
+            console.log(e);
+        });
    
 }
 exports.onNavigatedTo = onNavigatedTo;
