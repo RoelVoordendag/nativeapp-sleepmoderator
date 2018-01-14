@@ -1,12 +1,8 @@
 var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
-<<<<<<< HEAD
-var http = require("http");
-=======
 var dialogs = require("ui/dialogs");
-
->>>>>>> 4237b786f049249f267c77a3655656adb794ffe7
+var http = require("http");
 
 var drawer;
 
