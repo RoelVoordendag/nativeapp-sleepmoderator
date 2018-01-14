@@ -8,6 +8,7 @@ var pageData =  new Observable();
 
 //function starts wen page is loaded
 function pageLoaded(args){
+    console.log('dit is het id waarmee je bent ingelodg' + global.loginId);
     //var for the objects in the page
     var page = args.object;
 

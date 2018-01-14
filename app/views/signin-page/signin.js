@@ -1,6 +1,7 @@
 var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
+var http = require("http");
 
 var pageData =  new Observable();
 
@@ -23,9 +24,45 @@ function pageLoaded(args){
         },
         deletePassword: function(){
             password.text = "";
+        },
+        login : function(){
+            console.log("before link");
+            //getting data
+            http.getJSON('http://markvonk.com/sleep/users.php').then(function (r) {
+
+                console.log('after link');
+                //looping through the users to check if u can log in 
+                for(var i = 0; i<= r.length; i++){
+                    var user = r[i];
+
+                    if(email.text == user.email && password.text == user.password){
+                        
+                        console.log("deze user is ingelogd" + user.name + "met dit wachtwoord " + user.password);
+                        
+                        var path = "views/dashboard/dashboard";
+
+
+                            //module name is the path to the page 
+                            //context is the data u send to the nex page
+                        var userData={
+                                moduleName: path,
+                                context:{
+                                            userId: user.id
+                                        }
+                            }
+                        
+                        frameModule.topmost().navigate(userData);
+
+                    }else{
+                        console.log('eat a dick');
+                    }
+
+                    
+                }              
+            })
+
         }
     };
-
 }
 exports.pageLoaded = pageLoaded;
 
@@ -35,7 +72,28 @@ exports.goBack = function(){
 exports.registrationPage = function(){
     frameModule.topmost().navigate("views/signup-page/signup");
 }
-exports.login = function(){
-    frameModule.topmost().navigate("views/dashboard/dashboard")
-}
+// exports.login = function(){
+//     http.getJSON("http://markvonk.com/sleep/users.php").then(function (r) {
+//         //// Argument (r) is JSON!    
+//         console.dir(r);
+//         console.log(r);
+
+//         var user = r[0];
+
+//         console.dir(user.name);
+
+        
+        
+//     }, function (e) {
+//         //// Argument (e) is Error!
+//         var apidata = e;
+//         console.log(e);
+//     });
+
+
+
+
+
+    // frameModule.topmost().navigate("views/dashboard/dashboard");
+// }
 

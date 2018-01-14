@@ -11,6 +11,14 @@ function pageLoaded(args){
     //var for the objects in the page
     var page = args.object;
 
+    //getting data from login page
+    var data=page.navigationContext;
+    //data.userId is the id of the login user 
+    console.log(data.userId);
+    //this is variable to check if user is logged in
+    global.loginId = data.userId;
+
+
     drawer = view.getViewById(page, "sideDrawer");
 
     //timeslept section
@@ -66,6 +74,7 @@ function onNavigatedTo(args) {
 
     //getting Gauge
     var gaugeView = frameModule.topmost().getViewById("gaugeView");
+    
     timeSlept = 7;
     //creating title
     gaugeView.title = timeSlept + "H";

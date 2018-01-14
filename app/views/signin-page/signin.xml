@@ -10,7 +10,7 @@
             <TextField text="{{email}}" id="email"  tap="{{deleteEmail}}"  autocorrect="false" autocapitalizationType="none"/>    
             <TextField text="{{password}}" id="password" tap="{{deletePassword}}" secure="true" autocorrect="false" autocapitalizationType="none" />
 
-            <Button text="Login" class="loginButton" tap="login"  />
+            <Button text="Login" class="loginButton" tap="{{login}}"  />
             
             <label text="If you don't have a account create on" class="signIn-label" tap="registrationPage" horizontalAlignment="center"></label>
 

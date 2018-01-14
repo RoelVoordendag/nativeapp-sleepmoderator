@@ -26,7 +26,7 @@
         <StackLayout >
             <StackLayout id="top" orientation="horizontal">   
                 <StackLayout  id="gaugeSlept" horizontalAlignment="left" >
-                    <gauge:RadRadialGauge id="gaugeView" margin="10" title="lolol">
+                    <gauge:RadRadialGauge id="gaugeView" margin="10">
                         <gauge:RadRadialGauge.scales>
                         <gauge:RadialScale startAngle="0" sweepAngle="360" minimum="0" maximum="100" radius="0.9">
                             <gauge:RadialScale.scaleStyle>
