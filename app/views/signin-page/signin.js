@@ -6,8 +6,10 @@ var dialogs = require("ui/dialogs");
 
 var pageData =  new Observable();
 
+// loginButton
 //function starts wen page is loaded
 function pageLoaded(args){
+   
     //var for the objects in the page
     var page = args.object;
 
@@ -27,11 +29,11 @@ function pageLoaded(args){
             password.text = "";
         },
         login : function(){
-            console.log("before link");
+
+
             //getting data
             http.getJSON('http://markvonk.com/sleep/users.php').then(function (r) {
 
-                console.log('after link');
                 //looping through the users to check if u can log in 
                 for(var i = 0; i<= r.length; i++){
                     var user = r[i];
@@ -49,20 +51,29 @@ function pageLoaded(args){
                         var userData={
                                 moduleName: path,
                                 context:{
+                                            username: user.name,
                                             userId: user.id
                                         }
                             }
-                        
+    
                         frameModule.topmost().navigate(userData);
 
+                        global.falseLogin = false;
+
                     }else{
-                        //try something fun here
+                        global.falseLogin = true;
                     }
-
-                    
-                }              
+                    console.log(falseLogin);
+                }  
             })
-
+            //if login is not correct message is shown
+            if(global.falseLogin){
+                dialogs.alert({
+                    title: "Not logged in",
+                    message: "You must be logged in to be on this page. Please log in",
+                    okButtonText: "OK"
+                })        
+            }
         }
     };
 }
@@ -74,28 +85,3 @@ exports.goBack = function(){
 exports.registrationPage = function(){
     frameModule.topmost().navigate("views/signup-page/signup");
 }
-// exports.login = function(){
-//     http.getJSON("http://markvonk.com/sleep/users.php").then(function (r) {
-//         //// Argument (r) is JSON!    
-//         console.dir(r);
-//         console.log(r);
-
-//         var user = r[0];
-
-//         console.dir(user.name);
-
-        
-        
-//     }, function (e) {
-//         //// Argument (e) is Error!
-//         var apidata = e;
-//         console.log(e);
-//     });
-
-
-
-
-
-    // frameModule.topmost().navigate("views/dashboard/dashboard");
-// }
-

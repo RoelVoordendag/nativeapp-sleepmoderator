@@ -2,12 +2,14 @@ var frameModule = require("ui/frame");
 var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
 
+
 var pageData = new Observable();
 
 //this function starts when the page is loaded
 function pageLoaded(args) {
     //var page are the objects in the page
     var page = args.object;
+
     //here I get the objects by id
     var name = view.getViewById(page, "name");
     var email = view.getViewById(page, "email");

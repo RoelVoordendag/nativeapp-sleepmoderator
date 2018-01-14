@@ -23,7 +23,6 @@ function pageLoaded(args){
 
         frameModule.topmost().navigate('views/signin-page/signin');
     }
-    console.log('dit is het id waarmee je bent ingelodg' + global.loginId);
     //var for the objects in the page
     var page = args.object;
 
@@ -32,7 +31,7 @@ function pageLoaded(args){
     var name = view.getViewById(page, "name");
 
     page.bindingContext = {
-        name:  "Roel Voordendag",
+        name:  global.currentUsername,
     
     sleepData : [
         { day:"Maandag", hours:2 , test: 2 }, { day:"Dinsdag", hours: 8 }, { day: "Woensdag",hours: 9 },
@@ -55,8 +54,13 @@ exports.toggleDrawer = function() {
 };
 
 exports.logOut = function(){
-    global.logout = 1;
+    dialogs.alert({
+        title: "Log Out",
+        message: "You are logged out.",
+        okButtonText: "OK"
+    }).then(function () {
+        global.logout = true;        
 
-    frameModule.topmost().navigate('views/signin-page/signin');
-
+        frameModule.topmost().navigate('views/signin-page/signin');
+    });
 }
