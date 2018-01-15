@@ -64,15 +64,14 @@ function pageLoaded(args){
                     }else{
                         global.falseLogin = true;
                     }
-                    console.log(falseLogin);
                 }  
             })
             //if login is not correct message is shown
             if(global.falseLogin){
                 dialogs.alert({
-                    title: "Not logged in",
-                    message: "You must be logged in to be on this page. Please log in",
-                    okButtonText: "OK"
+                    title: "Your data is not correct",
+                    message: "Try to login again.",
+                    okButtonText: "Try Again"
                 })        
             }
         }
