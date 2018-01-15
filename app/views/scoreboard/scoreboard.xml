@@ -4,6 +4,7 @@
         xmlns:ui="nativescript-animated-circle"
         loaded="pageLoaded" 
         class="page"
+        navigatedTo="onNavigatedTo"
 >
      <ActionBar title="Scoreboard">
         <GridLayout>        
@@ -18,7 +19,31 @@
             <shared:sidedrawer />
         </sd:RadSideDrawer.drawerContent>
         <sd:RadSideDrawer.mainContent>
-   
+            <ScrollView orientation="vertical">
+                <StackLayout orientation="vertical">
+                    <StackLayout class="boxes" verticalAlignment="top" orientation="vertical">
+                        <StackLayout id="guus" horizontalAlignment="center">
+                        </StackLayout>
+                        <label text="Guus" class="name-label" horizontalAlignment="center"></label>
+                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
+                        <label text="{{guusScore}}" class="score" horizontalAlignment="center"></label>
+                    </StackLayout> 
+                    <StackLayout class="box" verticalAlignment="top" orientation="vertical">
+                        <StackLayout id="mark" horizontalAlignment="center">
+                        </StackLayout>
+                        <label text="Mark" class="name-label" horizontalAlignment="center"></label>
+                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
+                        <label text="{{markScore}}" class="score" horizontalAlignment="center"></label>
+                    </StackLayout> 
+                    <StackLayout class="boxes" verticalAlignment="top" orientation="vertical">
+                        <StackLayout id="roel" horizontalAlignment="center">
+                        </StackLayout>
+                        <label text="Roel" class="name-label" horizontalAlignment="center"></label>
+                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
+                        <label text="{{roelScore}}" class="score" horizontalAlignment="center"></label>
+                    </StackLayout> 
+                </StackLayout>
+            </ScrollView >
         </sd:RadSideDrawer.mainContent>
-    </sd:RadSideDrawer>
+        </sd:RadSideDrawer>
 </Page>

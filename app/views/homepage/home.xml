@@ -5,7 +5,6 @@
     <ActionBar title="Title">
         <GridLayout>        
             <label text="Welcome" id="label-actionbar" horizontalAlignment="center" />
-             <Button text="Alwin klik hier" id="register-button" tap="alwin" horizontalAlignment="left" verticalAlignment="bottom"/>
         </GridLayout>
     </ActionBar> 
     <StackLayout> 

@@ -1,0 +1,69 @@
+.boxes{
+    background-color: #BCE0FD;
+    width: 100%;
+    height: 750px;
+}
+.box{
+    background-color: #2699FB;
+    width: 100%;
+    height: 700px;
+
+}
+#guus{
+    margin-top:5px;
+    width: 100%;
+    height: 70%;
+    width: 400px;
+    height: 400px;
+    /* background-color: #2699FB; */
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    border-radius:200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+#mark{
+    margin-top:5px;
+    width: 100%;
+    height: 70%;
+    width: 400px;
+    height: 400px;
+    /* background-color: #2699FB; */
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    border-radius:200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+#roel{
+    margin-top:5px;
+    width: 100%;
+    height: 70%;
+    width: 400px;
+    height: 400px;
+    /* background-color: #2699FB; */
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    border-radius:200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+.score-label{
+    font-weight: bold;
+    color: #FF5722;
+    font-size: 26px;
+
+}
+.name-label{
+    font-weight: bold;
+    color: #FF5722;
+    font-size: 26px;
+}
+.score{
+    font-weight: bold;
+    color: #FF5722;
+    font-size: 26px;
+}
