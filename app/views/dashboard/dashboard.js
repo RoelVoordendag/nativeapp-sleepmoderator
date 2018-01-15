@@ -13,6 +13,7 @@ var deepSleepTextPlaceholder = " ";
 var latestSession;
 var latestBpm;
 var latestSessionId;
+var totalscore;
 
 
 
@@ -105,14 +106,6 @@ function onNavigatedTo(args) {
                     //this is fucking impossible
                 //Set deep sleep
 
-                //Push sleep hours to the database of this session
-                    //nog te maken: totaldeep, score   
-                http.getJSON("http://markvonk.com/sleep/updateSession.php?session_id="+latestSessionId+"&user_id="+loginId+"&date=date&sleep_start="+starttime+"&sleep_end="+endtime+"&total_sleep="+totaltimeslept+"&total_deep=00:00&score=1337").then(function (r) {
-                    var emptyfunction = "notsogoodbutdontknowotherway";
-                }, function (e) {
-                    var apidata = e;
-                    console.log(e);
-                });
 
                 //load the processed data into the page
                 //total time Slept Gauge 
@@ -131,12 +124,25 @@ function onNavigatedTo(args) {
 
                 //Set message on the side                
                 if(totaltimeslept >= targettotalslept){
-                    timeSleptTextPlaceholder = "That was a great night, keep it up!" 
+                    timeSleptTextPlaceholder = "That was a great night, keep it up!";
+                    totalscore = 1337; 
                 } else if (totaltimeslept >= 6){                    
-                    timeSleptTextPlaceholder = "Almost there, try to go to bed a little sooner tonight"
+                    timeSleptTextPlaceholder = "Almost there, try to go to bed a little sooner tonight";
+                    totalscore = 420;
                 } else if (totaltimeslept < 6){
-                    timeSleptTextPlaceholder = "You didn't sleep enough last night"
+                    timeSleptTextPlaceholder = "You didn't sleep enough last night";
+                    totalscore = 69;
                 }
+
+                //Push sleep hours to the database of this session
+                    //nog te maken: totaldeep  
+                    http.getJSON("http://markvonk.com/sleep/updateSession.php?session_id="+latestSessionId+"&user_id="+loginId+"&date=date&sleep_start="+starttime+"&sleep_end="+endtime+"&total_sleep="+totaltimeslept+"&total_deep=00:00&score="+totalscore).then(function (r) {
+                        var emptyfunction = "notsogoodbutdontknowotherway";
+                    }, function (e) {
+                        var apidata = e;
+                        console.log(e);
+                    });
+                    
                 //Set total time slept for gauge
                 timeSlept = totaltimeslept;
                 //create title in the gauge middle
@@ -181,6 +187,8 @@ function onNavigatedTo(args) {
             //save the data in vars to be used by the page
             var totaltimeslept = r[0].total_sleep;
             var totaldeepsleep = r[0].total_deep;
+            totalscore = r[0].score;
+            console.log("The user's score is: "+totalscore);
 
             console.log("total time slept from db is "+totaltimeslept);
             console.log("total deep slept from db is "+totaldeepsleep);

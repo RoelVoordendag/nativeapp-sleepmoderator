@@ -26,6 +26,7 @@ function pageLoaded(args){
     //var for the objects in the page
     var page = args.object;
 
+    page.getViewById("circle").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
     page.getViewById("icon").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
 
 
