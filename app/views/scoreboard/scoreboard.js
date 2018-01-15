@@ -50,122 +50,125 @@ function pageLoaded(args){
     
     var scoreBoard = view.getViewById(page, "scoreBoard");
 
-    //get the scores and show on screen
-    // for(var i = 1; i <3; i++){ 
-    // var i = 3;
-    //     console.log("Gelijk na for loop is i: "+i);
-    console.log("doet log het nog?")
-        //get latest session for user 1
-        http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
+    // //get the scores and show on screen
+        // // for(var i = 1; i <3; i++){ 
+        // // var i = 3;
+        // //     console.log("Gelijk na for loop is i: "+i);
+        // console.log("doet log het nog?")
+        //     //get latest session for user 1
+        //     http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
 
-            latestSessionId = r[r.length-1].session_id;
-            console.log("na req 1 is i: "+i);
-            console.log('session id: ' + latestSessionId);
+        //         latestSessionId = r[r.length-1].session_id;
+        //         console.log("na req 1 is i: "+i);
+        //         console.log('session id: ' + latestSessionId);
+                
+        //         //get latest session for user 1
+        //         http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
+
+        //             console.log("na req 2 is i: "+i);
+
+        //                 totalscore = r[0].score;
+        //                 scoreGuus = r[0].score;
+        //                 console.log('wat is deze score' + totalscore)
+        //                 if(totalscore <=70 ){
+        //                     page.getViewById("guus").backgroundImage = "~/images/badges/score-brons.png";
+        //                 }else if(totalscore >=70 && totalscore<=430){
+        //                     page.getViewById("guus").backgroundImage = "~/images/badges/score-silver.png";
+        //                 }else if(totalscore >= 431){
+        //                     page.getViewById("guus").backgroundImage = "~/images/badges/score-gold.png";
+        //                 }    
+        //         }, function (e) {
+
+        //             var apidata = e;
+        //             console.log(e);
             
-            //get latest session for user 1
-            http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
+        //         });
+        //     }, function (e) {
 
-                console.log("na req 2 is i: "+i);
-
-                    totalscore = r[0].score;
-                    scoreGuus = r[0].score;
-                    console.log('wat is deze score' + totalscore)
-                    if(totalscore <=70 ){
-                        page.getViewById("guus").backgroundImage = "~/images/badges/score-brons.png";
-                    }else if(totalscore >=70 && totalscore<=430){
-                        page.getViewById("guus").backgroundImage = "~/images/badges/score-silver.png";
-                    }else if(totalscore >= 431){
-                        page.getViewById("guus").backgroundImage = "~/images/badges/score-gold.png";
-                    }    
-            }, function (e) {
-
-                var apidata = e;
-                console.log(e);
+        //         var apidata = e;
+        //         console.log(e);
         
-            });
-        }, function (e) {
+        //     });
 
-            var apidata = e;
-            console.log(e);
-    
-        });
+        //     console.log("en tussendoor");
 
-        //get latest session for user 2
-        http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
+        //     //get latest session for user 2
+        //     http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
 
-            latestSessionId = r[r.length-1].session_id;
-            console.log("na req 1 is i: "+i);
-            console.log('session id: ' + latestSessionId);
+        //         latestSessionId = r[r.length-1].session_id;
+        //         console.log("na req 1 is i: "+i);
+        //         console.log('session id: ' + latestSessionId);
+                
+        //         //get latest session for user 2
+        //         http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
+
+        //             console.log("na req 2 is i: "+i);
+
+        //                     totalscore = r[0].score;
+        //                     scoreMark= r[0].score;
+        //                     console.log('wat is deze score' + totalscore)
+        //                 if(totalscore <=70 ){
+        //                     page.getViewById("mark").backgroundImage = "~/images/badges/score-brons.png";
+        //                 }else if(totalscore >=70 && totalscore<=430){
+        //                     page.getViewById("mark").backgroundImage = "~/images/badges/score-silver.png";
+        //                 }else if(totalscore >= 431){
+        //                     page.getViewById("mark").backgroundImage = "~/images/badges/score-gold.png";
+        //                 }
+        //         }, function (e) {
+
+        //             var apidata = e;
+        //             console.log(e);
             
-            //get latest session for user 2
-            http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
+        //         });
+        //     }, function (e) {
 
-                console.log("na req 2 is i: "+i);
-
-                        totalscore = r[0].score;
-                        scoreMark= r[0].score;
-                        console.log('wat is deze score' + totalscore)
-                    if(totalscore <=70 ){
-                        page.getViewById("mark").backgroundImage = "~/images/badges/score-brons.png";
-                    }else if(totalscore >=70 && totalscore<=430){
-                        page.getViewById("mark").backgroundImage = "~/images/badges/score-silver.png";
-                    }else if(totalscore >= 431){
-                        page.getViewById("mark").backgroundImage = "~/images/badges/score-gold.png";
-                    }
-            }, function (e) {
-
-                var apidata = e;
-                console.log(e);
+        //         var apidata = e;
+        //         console.log(e);
         
-            });
-        }, function (e) {
+        //     });
 
-            var apidata = e;
-            console.log(e);
-    
-        });
+        //     //get latest session for user 3
+        //     http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
 
-        //get latest session for user 3
-        http.getJSON("http://markvonk.com/sleep/sessions.php?user=1").then(function (r){
+        //         latestSessionId = r[r.length-1].session_id;
+        //         console.log("na req 1 is i: "+i);
+        //         console.log('session id: ' + latestSessionId);
+                
+        //         //get latest session for user 3
+        //         http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
 
-            latestSessionId = r[r.length-1].session_id;
-            console.log("na req 1 is i: "+i);
-            console.log('session id: ' + latestSessionId);
+        //             console.log("na req 2 is i: "+i);
+
+        //                     totalscore = r[0].score;
+        //                     scoreRoel= r[0].score;
+        //                     console.log('wat is deze score' + totalscore)
+        //                 if(totalscore <=70 ){
+        //                     page.getViewById("roel").backgroundImage = "~/images/badges/score-brons.png";
+        //                 }else if(totalscore >=70 && totalscore<=430){
+        //                     page.getViewById("roel").backgroundImage = "~/images/badges/score-silver.png";
+        //                 }else if(totalscore >= 431){
+        //                     page.getViewById("roel").backgroundImage = "~/images/badges/score-gold.png";
+        //                 }              
+        //         }, function (e) {
+
+        //             var apidata = e;
+        //             console.log(e);
             
-            //get latest session for user 3
-            http.getJSON("http://markvonk.com/sleep/sessions.php?user=1&session=" + latestSessionId).then(function (r){
+        //         });
+        //     }, function (e) {
 
-                console.log("na req 2 is i: "+i);
-
-                        totalscore = r[0].score;
-                        scoreRoel= r[0].score;
-                        console.log('wat is deze score' + totalscore)
-                    if(totalscore <=70 ){
-                        page.getViewById("roel").backgroundImage = "~/images/badges/score-brons.png";
-                    }else if(totalscore >=70 && totalscore<=430){
-                        page.getViewById("roel").backgroundImage = "~/images/badges/score-silver.png";
-                    }else if(totalscore >= 431){
-                        page.getViewById("roel").backgroundImage = "~/images/badges/score-gold.png";
-                    }              
-            }, function (e) {
-
-                var apidata = e;
-                console.log(e);
+        //         var apidata = e;
+        //         console.log(e);
         
-            });
-        }, function (e) {
-
-            var apidata = e;
-            console.log(e);
-    
-        });
-        
-        var text = new observableModule.fromObject({
-            name: global.currentUsername,
-            guusScore: scoreGuus,
-            markScore: scoreMark,
-            roelScore: scoreRoel
-        });
+        //     });
+            
+        //     console.log("en finally here");
+        //     var text = new observableModule.fromObject({
+        //         name: global.currentUsername,
+        //         guusScore: scoreGuus,
+        //         markScore: scoreMark,
+        //         roelScore: scoreRoel
+        //     });
     
 
     page.bindingContext = text;   
