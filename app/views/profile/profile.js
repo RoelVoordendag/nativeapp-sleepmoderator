@@ -3,9 +3,12 @@ var Observable = require("data/observable").Observable;
 var view = require("ui/core/view");
 var dialogs = require("ui/dialogs");
 var http = require("http");
-
-
 var drawer;
+
+//vars for graph
+var dates = [];
+var sleephours = [];
+var deepsleephours =[];
 
 var pageData =  new Observable();
 
@@ -43,21 +46,47 @@ function pageLoaded(args){
     drawer = view.getViewById(page, "sideDrawer");
     
     var name = view.getViewById(page, "name");
-
-    page.bindingContext = {
-        name:  global.currentUsername,
     
-    sleepData : [
-        { day:"Maandag", hours:2 , test: 2 }, { day:"Dinsdag", hours: 8 }, { day: "Woensdag",hours: 9 },
-        { day: "Donderdag", hours: 8 }, { day:"Vrijdag", hours: 7 },{ day: "Zaterdag", hours: 8 },
-        { day: "Zondag", hours: 7.5 }
-      ],
-      deepSleep : [
-          { day:"Maandag", hours: 2}, { day:"Dinsdag", hours: 5 }, { day: "Woensdag",hours: 2 },
-          { day: "Donderdag", hours: 4 }, { day:"Vrijdag", hours: 3 },{ day: "Zaterdag", hours:5 },
-          { day: "Zondag", hours: 2.2 }
-      ]
-    };
+    //get all sessions, select the latest 5 and store them as a var
+    http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId).then(function (r) {
+
+        console.dir(r);
+
+        var sessionnumber = r.length;
+        
+        if(sessionnumber > 5){
+            sessionnumber = 5; 
+        }
+        console.log("sessies die er nu zijn: "+sessionnumber);
+
+        for (i = 0; i < sessionnumber; i++) { 
+            dates[i] = r[i].date;
+            sleephours[i] = [r[i].total_sleep];
+            deepsleephours[i] =[r[i].total_deep];
+        }
+
+        console.dir(dates);
+        console.dir(sleephours);
+        console.dir(deepsleephours);
+        console.log(dates[0]);
+        console.log(sleephours[0]);
+        page.bindingContext = {
+            name:  global.currentUsername,
+        
+        sleepData : [
+            { day: dates[0], hours: parseInt(sleephours[0][0]) }, { day: dates[1], hours: parseInt(sleephours[1][0]) }, { day: dates[2], hours: parseInt(sleephours[2][0]) },
+            { day: dates[3], hours: parseInt(sleephours[3][0]) }, { day: dates[4], hours: parseInt(sleephours[4][0]) }
+          ],
+          deepSleep : [
+            { day: dates[0], hours: parseInt(deepsleephours[0][0]) }, { day: dates[1], hours: parseInt(deepsleephours[2][0]) }, { day: dates[2], hours: parseInt(deepsleephours[2][0]) },
+            { day: dates[3], hours: parseInt(deepsleephours[3][0]) }, { day: dates[4], hours: parseInt(deepsleephours[4][0]) }
+          ]
+        };
+
+    }, function (e) {        
+        var apidata = e;
+        console.log(e);
+    });
 }
 exports.pageLoaded = pageLoaded;
 
