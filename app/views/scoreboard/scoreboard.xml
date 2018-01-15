@@ -25,22 +25,19 @@
                         <StackLayout id="guus" horizontalAlignment="center">
                         </StackLayout>
                         <label text="Guus" class="name-label" horizontalAlignment="center"></label>
-                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
-                        <label text="{{guusScore}}" class="score" horizontalAlignment="center"></label>
+                        <label text="700" class="score" horizontalAlignment="center"></label>
                     </StackLayout> 
                     <StackLayout class="box" verticalAlignment="top" orientation="vertical">
                         <StackLayout id="mark" horizontalAlignment="center">
                         </StackLayout>
                         <label text="Mark" class="name-label" horizontalAlignment="center"></label>
-                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
-                        <label text="{{markScore}}" class="score" horizontalAlignment="center"></label>
+                        <label text="1200" class="score" horizontalAlignment="center"></label>
                     </StackLayout> 
                     <StackLayout class="boxes" verticalAlignment="top" orientation="vertical">
                         <StackLayout id="roel" horizontalAlignment="center">
                         </StackLayout>
                         <label text="Roel" class="name-label" horizontalAlignment="center"></label>
-                        <label text="Score:" class="score-label" horizontalAlignment="center"></label>
-                        <label text="{{roelScore}}" class="score" horizontalAlignment="center"></label>
+                        <label text="300" class="score" horizontalAlignment="center"></label>
                     </StackLayout> 
                 </StackLayout>
             </ScrollView >

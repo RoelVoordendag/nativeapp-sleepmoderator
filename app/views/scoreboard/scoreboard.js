@@ -50,6 +50,10 @@ function pageLoaded(args){
     
     var scoreBoard = view.getViewById(page, "scoreBoard");
 
+    page.bindingContext = {
+        name:  global.currentUsername
+    }
+
     // //get the scores and show on screen
         // // for(var i = 1; i <3; i++){ 
         // // var i = 3;
@@ -171,7 +175,6 @@ function pageLoaded(args){
         //     });
     
 
-    page.bindingContext = text;   
 }
 exports.pageLoaded = pageLoaded;
 
