@@ -14,7 +14,7 @@
 
             <label id="main-label" text="Discover" horizontalAlignment="center"></label>
     
-            <label id="despcription-label" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt Excepteur sint occaecat cupidatat non proident"/>
+            <label id="despcription-label" text="Improve your sleep while playing a game!"/>
            
             <chart:RadPieChart height="300" id="pie-chart" >
             <chart:RadPieChart.series>
