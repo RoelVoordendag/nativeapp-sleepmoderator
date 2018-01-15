@@ -20,6 +20,3 @@ exports.goToProfile = function(){
 exports.goToScore =  function(){
     frameModule.topmost().navigate("views/scoreboard/scoreboard");
 };
-exports.goToNotification =  function(){
-    frameModule.topmost().navigate("views/notification/notification")
-};
