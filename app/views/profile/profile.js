@@ -31,15 +31,14 @@ function pageLoaded(args){
 
     if(global.totalScore <=70 ){
         page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
+        page.getViewById("icon").backgroundImage = "~/images/badges/profile-brons.png";
     }else if(global.totalScore >=70 && global.totalScore<=430){
         page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
+        page.getViewById("icon").backgroundImage = "~/images/badges/profile-silver.png";
     }else if(global.totalScore >= 431){
         page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
+        page.getViewById("icon").backgroundImage = "~/images/badges/profile-gold.png";
     }
-
-    
-    page.getViewById("icon").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
-
 
     drawer = view.getViewById(page, "sideDrawer");
     
