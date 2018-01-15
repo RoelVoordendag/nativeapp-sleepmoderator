@@ -1,3 +1,24 @@
-<Page>
-    <label text="22222"></label>
+<Page   xmlns:shared="app/shared"
+        xmlns:shared="shared/sidedrawer"
+        xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-pro-ui/sidedrawer" 
+        xmlns:ui="nativescript-animated-circle"
+        loaded="pageLoaded" 
+        class="page"
+>
+     <ActionBar title="Scoreboard">
+        <GridLayout>        
+            <label text="Scoreboard" id="label-actionbar" horizontalAlignment="center" />
+            <label text="&#xf0c9;" class="menu-button" tap="toggleDrawer" horizontalAlignment= "left" verticalAlignment="center"/>
+            <label text="&#xf08b;" class="menu-button" tap="logOut" horizontalAlignment="right" verticalAlignment="center"></label>
+        </GridLayout>
+    </ActionBar> 
+
+    <sd:RadSideDrawer id="sideDrawer">
+        <sd:RadSideDrawer.drawerContent>
+            <shared:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
+        <sd:RadSideDrawer.mainContent>
+   
+        </sd:RadSideDrawer.mainContent>
+    </sd:RadSideDrawer>
 </Page>

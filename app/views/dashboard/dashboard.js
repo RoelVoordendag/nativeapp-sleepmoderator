@@ -23,7 +23,7 @@ function pageLoaded(args){
         //var for the objects in the page
         var page = args.object;
 
-        page.getViewById("circle").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
+      
 
 
         //getting data from login page
@@ -192,6 +192,16 @@ function onNavigatedTo(args) {
 
             console.log("total time slept from db is "+totaltimeslept);
             console.log("total deep slept from db is "+totaldeepsleep);
+
+            //getting profile picture based on score
+            if(totalscore <=70 ){
+                page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
+            }else if(totalscore >=70 && totalscore<=430){
+                page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
+            }else if(totalscore >= 431){
+                page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
+            }
+
 
             //total time Slept Gauge 
 
