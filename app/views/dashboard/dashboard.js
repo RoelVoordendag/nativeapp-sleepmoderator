@@ -22,19 +22,7 @@ function pageLoaded(args){
     //Login check and user id pass
         //var for the objects in the page
         var page = args.object;
-
-      
-
-
-        //getting data from login page
-        var data = page.navigationContext;
         
-        //data.userId is the id of the login user 
-        //this is variable to check if user is logged in
-        global.loginId = data.userId;
-        //name of current logged in user
-        global.currentUsername = data.username
-        //checking if you are logged in
         if(global.logout){
             dialogs.alert({
                 title: "Not logged in",
@@ -193,6 +181,7 @@ function onNavigatedTo(args) {
             console.log("total time slept from db is "+totaltimeslept);
             console.log("total deep slept from db is "+totaldeepsleep);
 
+            console.log('werkt deze score ook' + totalscore);
             //getting profile picture based on score
             if(totalscore <=70 ){
                 page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";

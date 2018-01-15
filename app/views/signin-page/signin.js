@@ -43,24 +43,17 @@ function pageLoaded(args){
                         
                         console.log("deze user is ingelogd" + user.name + "met dit wachtwoord " + user.password);
                         
-                        var path = "views/dashboard/dashboard";
                         //beacasue data.user keeps existing this variable is to check if you are still logged in
                         global.logout = 0;
 
-                        //module name is the path to the page 
-                        //context is the data u send to the nex page
-                        var userData={
-                                moduleName: path,
-                                context:{
-                                            username: user.name,
-                                            userId: user.id
-                                        }
-                            }
-    
-                        frameModule.topmost().navigate(userData);
+                        global.loginId = user.id;
+                        //name of current logged in user
+                        global.currentUsername = user.name;
 
                         global.falseLogin = false;
 
+    
+                        frameModule.topmost().navigate("views/dashboard/dashboard");
                     }else{
                         global.falseLogin = true;
                     }
