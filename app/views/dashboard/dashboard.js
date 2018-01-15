@@ -114,14 +114,68 @@ function onNavigatedTo(args) {
                     console.log(e);
                 });
 
+                //load the processed data into the page
+                //total time Slept Gauge 
+
+                //getting Gauge
+                var gaugeView = frameModule.topmost().getViewById("gaugeView");
+
+                //Calculate percentage for total sleep bar
+                var targettotalslept = 7.5;
+
+                var percentagetotalslept = (totaltimeslept / targettotalslept) * 100;
+
+                if (percentagetotalslept > 100){
+                    percentagetotalslept = 100;
+                }
+
+                //Set message on the side                
+                if(totaltimeslept >= targettotalslept){
+                    timeSleptTextPlaceholder = "That was a great night, keep it up!" 
+                } else if (totaltimeslept >= 6){                    
+                    timeSleptTextPlaceholder = "Almost there, try to go to bed a little sooner tonight"
+                } else if (totaltimeslept < 6){
+                    timeSleptTextPlaceholder = "You didn't sleep enough last night"
+                }
+                //Set total time slept for gauge
+                timeSlept = totaltimeslept;
+                //create title in the gauge middle
+                gaugeView.title = timeSlept + "H";
+                //getting indicators to tell how far the bar goes
+                var scale = gaugeView.scales.getItem(0);
+                var barIndicator = scale.indicators.getItem(1);
+                                    
+                barIndicator.maximum =  percentagetotalslept;
+
+
+                //Deep sleep Section Gauge
+                var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
+                deepSleep = 3;
+                //title
+                deepSleepGauge.title = deepSleep + "H";
+                //indicator
+                var deepScale = deepSleepGauge.scales.getItem(0);
+                var indicatorDeepSleep = deepScale.indicators.getItem(1);
+
+                indicatorDeepSleep.maximum = 40;    
+                        
+                //set the messages that need to be shown on the page
+                var sleeptext = new observableModule.fromObject({
+                    timeSleptText : [timeSleptTextPlaceholder],
+                    deepSleepText : [deepSleepTextPlaceholder],
+                    name: global.currentUsername
+                });
+
+                page.bindingContext = sleeptext;     
+
             }, function (e) {
                 var apidata = e;
                 console.log(e);
             });
 
-        }
+        } else {
 
-        //now that the data is saved (if it wasn't already), get the processed data from the users latest session
+        //if the data was already saves, get the processed data from the users latest session
         http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId+"&session="+latestSessionId).then(function (r) {
             console.dir(r[0]);
             //save the data in vars to be used by the page
@@ -187,7 +241,8 @@ function onNavigatedTo(args) {
         }, function (e) {        
             var apidata = e;
             console.log(e);
-        });        
+        });     
+        }       
             
     }, function (e) {
 
