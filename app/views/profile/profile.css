@@ -12,8 +12,15 @@
 }
 #icon{
     width: 100%;
-    background-color: #bce0fd;
     height: 70%;
+    width: 350px;
+    height: 350px;
+    /* background-color: #2699FB; */
+    -moz-border-radius: 175px;
+    -webkit-border-radius: 175px;
+    border-radius:175px;
+    background-repeat: no-repeat;
+    background-size: contain;
 
 }
 #graph{

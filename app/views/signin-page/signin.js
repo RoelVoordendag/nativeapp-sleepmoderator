@@ -12,6 +12,7 @@ function pageLoaded(args){
    
     //var for the objects in the page
     var page = args.object;
+    
 
     //get object by id
     var email = view.getViewById(page,"email");

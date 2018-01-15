@@ -5,9 +5,9 @@
 
                                 
                 <StackLayout class="sidedrawer-header" verticalAlignment="bottom" orientation="horizontal">
-                        <StackLayout id="circle" horizontalAlignment="left" verticalAlignment="center" oriantation="horizontal"> -->
-                             <label id="label-circle" text="&#xf007;" verticalAlignment="center" horizontalAlignment="center"></label> -->
-                       </StackLayout> 
+                        <StackLayout id="circle" horizontalAlignment="left" verticalAlignment="center" oriantation="horizontal"> 
+                        
+                        </StackLayout> 
                        <label text="{{name}}" id="person" verticalAlignment="center" horizontalAlignment="right"></label>
                 </StackLayout> 
 

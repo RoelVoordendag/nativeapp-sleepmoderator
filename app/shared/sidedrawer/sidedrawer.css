@@ -28,16 +28,18 @@
 } */
 
 #circle{
-    font-family: "fontawesome-webfont";
-    font-size: 32px;
+    /* font-family: "fontawesome-webfont";
+    font-size: 32px; */
     width: 200px;
     height: 200px;
-    background-color: #2699FB;
+    /* background-color: #2699FB; */
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     border-radius: 100px;
-    color: white;
+    /* color: white; */
     margin-left: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 #wrapper{
     width: 50%;

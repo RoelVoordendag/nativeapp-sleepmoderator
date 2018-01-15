@@ -24,7 +24,7 @@
         <StackLayout orientation="vertical">
             <StackLayout id="top" orientation="vertical" verticalAlignment="top">
                 <StackLayout id="icon">
-                    <label id="icon-person" text="&#xf007;" fontSize="85" verticalAlignment="center" horizontalAlignment="center"></label>
+                
                 </StackLayout>
                 <StackLayout orientation="horizontal" horizontalAlignment="center">
                    <StackLayout id="sleep"> </StackLayout> <label text=" Sleep      "></label>
