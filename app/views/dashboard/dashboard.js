@@ -22,7 +22,7 @@ function pageLoaded(args){
     //Login check and user id pass
         //var for the objects in the page
         var page = args.object;
-        
+
         if(global.logout){
             dialogs.alert({
                 title: "Not logged in",
@@ -176,12 +176,13 @@ function onNavigatedTo(args) {
             var totaltimeslept = r[0].total_sleep;
             var totaldeepsleep = r[0].total_deep;
             totalscore = r[0].score;
+            
+            global.totalScore = totalscore;
             console.log("The user's score is: "+totalscore);
 
             console.log("total time slept from db is "+totaltimeslept);
             console.log("total deep slept from db is "+totaldeepsleep);
 
-            console.log('werkt deze score ook' + totalscore);
             //getting profile picture based on score
             if(totalscore <=70 ){
                 page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";

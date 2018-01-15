@@ -11,26 +11,8 @@ var pageData =  new Observable();
 
 //function starts wen page is loaded
 function pageLoaded(args){
-
-    // http.getJSON("http://markvonk.com/sleep/sessions.php?user="+loginId+"&session="+latestSessionId).then(function (r) {
-    //     console.dir(r[0]);
-    //     //save the data in vars to be used by the page
-    //     var totaltimeslept = r[0].total_sleep;
-    //     var totaldeepsleep = r[0].total_deep;
-    //     totalscore = r[0].score;
-    //     console.log("The user's score is: "+totalscore);
-
-    //     console.log("total time slept from db is "+totaltimeslept);
-    //     console.log("total deep slept from db is "+totaldeepsleep);
-
-    //     //getting profile picture based on score
-    //     if(totalscore <=70 ){
-    //         page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
-    //     }else if(totalscore >=70 && totalscore<=430){
-    //         page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
-    //     }else if(totalscore >= 431){
-    //         page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
-    // }
+    
+    
     //checking if you are logged in
     if(global.logout){
         //popup message
@@ -47,7 +29,15 @@ function pageLoaded(args){
     //var for the objects in the page
     var page = args.object;
 
-    page.getViewById("circle").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
+    if(global.totalScore <=70 ){
+        page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
+    }else if(global.totalScore >=70 && global.totalScore<=430){
+        page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
+    }else if(global.totalScore >= 431){
+        page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
+    }
+
+    
     page.getViewById("icon").backgroundImage = "https://cdn.shopify.com/s/files/1/0185/5092/products/persons-0024_grande.png?v=1369543702";
 
 
