@@ -86,14 +86,14 @@ function onNavigatedTo(args) {
                 console.log(endtime);
 
                 var dif = ( new Date("1970-1-1 " + endtime) - new Date("1970-1-1 " + starttime) ) / 1000 / 60 / 60;
-                var totaltimeslept = Math.round( dif * 10 ) / 10;                    
+                var totaltimeslept = Math.round( dif * 10 ) / 10;         
+                
+                var totaldeepsleep = (totaltimeslept / 100) * 25;
+                totaldeepsleep = Math.round(totaldeepsleep * 10 ) / 10; 
 
-                //Calculate deep sleep
-                    //get bpm from session
-                    //calculate when bpm is x amount lower than startpoint bpm for a certain amount of time
-                    //this is fucking impossible
-                //Set deep sleep
-
+                //get date
+                var sleepdate = startdate.substr(0, 10);
+                console.log("datum is "+sleepdate);
 
                 //load the processed data into the page
                 //total time Slept Gauge 
@@ -103,28 +103,32 @@ function onNavigatedTo(args) {
 
                 //Calculate percentage for total sleep bar
                 var targettotalslept = 7.5;
+                var targetdeepsleep = (7.5/100)*22;
 
                 var percentagetotalslept = (totaltimeslept / targettotalslept) * 100;
+                var percentagedeepsleep = (totaldeepsleep / targetdeepsleep) * 100;
 
                 if (percentagetotalslept > 100){
                     percentagetotalslept = 100;
                 }
 
+                if (percentagedeepsleep > 100){
+                    percentagedeepsleep = 100;
+                }
+
                 //Set message on the side                
                 if(totaltimeslept >= targettotalslept){
                     timeSleptTextPlaceholder = "That was a great night, keep it up!";
-                    totalscore = 1337; 
                 } else if (totaltimeslept >= 6){                    
                     timeSleptTextPlaceholder = "Almost there, try to go to bed a little sooner tonight";
-                    totalscore = 420;
                 } else if (totaltimeslept < 6){
                     timeSleptTextPlaceholder = "You didn't sleep enough last night";
-                    totalscore = 69;
                 }
 
+                totalscore = totaltimeslept * 100;
+
                 //Push sleep hours to the database of this session
-                    //nog te maken: totaldeep  
-                    http.getJSON("http://markvonk.com/sleep/updateSession.php?session_id="+latestSessionId+"&user_id="+loginId+"&date=date&sleep_start="+starttime+"&sleep_end="+endtime+"&total_sleep="+totaltimeslept+"&total_deep=00:00&score="+totalscore).then(function (r) {
+                    http.getJSON("http://markvonk.com/sleep/updateSession.php?session_id="+latestSessionId+"&user_id="+loginId+"&date="+sleepdate+"&sleep_start="+starttime+"&sleep_end="+endtime+"&total_sleep="+totaltimeslept+"&total_deep="+totaldeepsleep+"&score="+totalscore).then(function (r) {
                         var emptyfunction = "notsogoodbutdontknowotherway";
                     }, function (e) {
                         var apidata = e;
@@ -144,14 +148,14 @@ function onNavigatedTo(args) {
 
                 //Deep sleep Section Gauge
                 var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
-                deepSleep = 3;
+                deepSleep = totaldeepsleep;
                 //title
                 deepSleepGauge.title = deepSleep + "H";
                 //indicator
                 var deepScale = deepSleepGauge.scales.getItem(0);
                 var indicatorDeepSleep = deepScale.indicators.getItem(1);
 
-                indicatorDeepSleep.maximum = 40;    
+                indicatorDeepSleep.maximum = percentagedeepsleep;    
                         
                 //set the messages that need to be shown on the page
                 var sleeptext = new observableModule.fromObject({
@@ -200,11 +204,17 @@ function onNavigatedTo(args) {
 
             //Calculate percentage for total sleep bar
             var targettotalslept = 7.5;
+            var targetdeepsleep = (7.5/100)*25;
 
             var percentagetotalslept = (totaltimeslept / targettotalslept) * 100;
+            var percentagedeepsleep = (totaldeepsleep / targetdeepsleep) * 100;
 
             if (percentagetotalslept > 100){
                 percentagetotalslept = 100;
+            }
+
+            if (percentagedeepsleep > 100){
+                percentagedeepsleep = 100;
             }
 
             //Set message on the side                
@@ -228,14 +238,14 @@ function onNavigatedTo(args) {
 
             //Deep sleep Section Gauge
             var deepSleepGauge = frameModule.topmost().getViewById("DeepSleepGauge");
-            deepSleep = 3;
+            deepSleep = totaldeepsleep;
             //title
             deepSleepGauge.title = deepSleep + "H";
             //indicator
             var deepScale = deepSleepGauge.scales.getItem(0);
             var indicatorDeepSleep = deepScale.indicators.getItem(1);
 
-            indicatorDeepSleep.maximum = 40;    
+            indicatorDeepSleep.maximum = percentagedeepsleep;    
                     
             //set the messages that need to be shown on the page
             var sleeptext = new observableModule.fromObject({
