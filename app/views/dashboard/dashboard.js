@@ -96,6 +96,16 @@ function onNavigatedTo(args) {
                 console.log("datum is "+sleepdate);
 
                 //load the processed data into the page
+
+                //getting profile picture based on score
+                if(totalscore <=70 ){
+                    page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
+                }else if(totalscore >=70 && totalscore<=430){
+                    page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
+                }else if(totalscore >= 431){
+                    page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
+                }
+
                 //total time Slept Gauge 
 
                 //getting Gauge
@@ -187,15 +197,14 @@ function onNavigatedTo(args) {
             console.log("total time slept from db is "+totaltimeslept);
             console.log("total deep slept from db is "+totaldeepsleep);
 
-            //getting profile picture based on score
-            if(totalscore <=70 ){
+             //getting profile picture based on score
+             if(totalscore <=70 ){
                 page.getViewById("circle").backgroundImage = "~/images/badges/profile-brons.png";
             }else if(totalscore >=70 && totalscore<=430){
                 page.getViewById("circle").backgroundImage = "~/images/badges/profile-silver.png";
             }else if(totalscore >= 431){
                 page.getViewById("circle").backgroundImage = "~/images/badges/profile-gold.png";
             }
-
 
             //total time Slept Gauge 
 
